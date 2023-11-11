@@ -1,6 +1,6 @@
 # Репозиториум за предметот Дизајн и архитектура на софтвер, 2023/24г.
 
-![logo_culturedge](https://github.com/afilipovski/DiAnS/assets/108832569/db72d041-ec77-46af-8d77-3db81f067477.png)
+![logo](https://github.com/afilipovski/DiAnS/assets/108832569/3a4f0099-ea61-4256-bbfe-2a2f485011d5.png)
 
 
 ## **Тема:**
