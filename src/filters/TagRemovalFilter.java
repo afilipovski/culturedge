@@ -3,16 +3,21 @@ package filters;
 import models.CulturalHeritage;
 import models.Node;
 
-public class TagRemovalFilter implements Filter<Node, CulturalHeritage> {
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class TagRemovalFilter implements Filter<List<Node>, List<CulturalHeritage>> {
 
     @Override
-    public CulturalHeritage execute(Node input) {
-        return new CulturalHeritage(
-                input.getProperty("name"),
-                input.lat,
-                input.lon,
-                input.getProperty("historic"),
-                input.getProperty("tourism")
-        );
+    public List<CulturalHeritage> execute(List<Node> input) {
+        return input.stream()
+                .map(node -> new CulturalHeritage(
+                        node.getProperty("name"),
+                        node.lat,
+                        node.lon,
+                        node.getProperty("historic"),
+                        node.getProperty("tourism"))).collect(Collectors.toList());
+
     }
+
 }

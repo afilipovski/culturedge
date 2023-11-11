@@ -1,14 +1,18 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import filters.BoundaryStonesRemoval;
+import filters.NullNamesRemovalFilter;
+import filters.TagRemovalFilter;
 import models.CulturalHeritage;
 import models.DConfig;
+import models.Node;
 import models.OsmModel;
+import pipe.Pipe;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -29,19 +33,21 @@ public class Main {
         }
 
         XmlMapper xmlMapper = new XmlMapper();
-        OsmModel osmModel = new OsmModel();
-        try(InputStream fileStream = new FileInputStream("data/output.osm")) {
+        OsmModel osmModel;
+        try (InputStream fileStream = new FileInputStream("data/output.osm")) {
             osmModel = xmlMapper.readValue(fileStream, OsmModel.class);
         }
-        List<CulturalHeritage> chList = new ArrayList<>();
-        osmModel.nodes.forEach(n -> chList.add(new CulturalHeritage(
-                n.getProperty("name"),
-                n.lat,
-                n.lon,
-                n.getProperty("historic"),
-                n.getProperty("tourism")
-        )));
+
+        List<Node> nodes = osmModel.getNodes();
+        Pipe<List<Node>, List<CulturalHeritage>> pipe =
+                new Pipe<>(new TagRemovalFilter())
+                        .chain(new NullNamesRemovalFilter())
+                        .chain(new BoundaryStonesRemoval());
+
+        List<CulturalHeritage> chList = pipe.process(nodes);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writeValue(new File("data/cultural_heritage.json"), chList);
         chList.forEach(System.out::println);
-        System.out.println(osmModel.nodes.size());
+        System.out.println(chList.size());
     }
 }

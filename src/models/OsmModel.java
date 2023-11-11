@@ -13,5 +13,9 @@ public class OsmModel {
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "node")
     public List<Node> nodes;
+
+    public List<Node> getNodes() {
+        return nodes;
+    }
 }
 
