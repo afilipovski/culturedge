@@ -9,6 +9,7 @@ import { MapComponent } from './map/map.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PopupContentComponent } from './popup-content/popup-content.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     AboutComponent,
     MapComponent,
+    PopupContentComponent,
   ],
   imports: [
     BrowserModule,

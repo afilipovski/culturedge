@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { DomPortalOutlet } from '@angular/cdk/portal';
 
 // import 'ol/ol.css'; // Import OpenLayers CSS
 import Map from 'ol/Map';
@@ -12,6 +14,10 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import { fromLonLat } from 'ol/proj';
 import VectorLayer from 'ol/layer/Vector';
+import Popup from 'ol-popup';
+import { Coordinate } from 'ol/coordinate';
+import { PopupContentComponent } from '../popup-content/popup-content.component';
+
 
 interface TranslationDictionary {
   [key: string]: string;
@@ -22,9 +28,10 @@ interface TranslationDictionary {
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent {
+export class MapComponent implements AfterViewInit {
   constructor (
-    private heritageService : HeritageService  
+    private heritageService : HeritageService,
+    private componentFactoryResolver : ComponentFactoryResolver
   ) {}
 
   sites : IHeritageSite[] = []
@@ -46,6 +53,7 @@ export class MapComponent {
         zoom: 8,
     }),
   });
+  popup = new Popup()
 
   change() {
     this.filteredSites = this.sites
@@ -83,8 +91,6 @@ export class MapComponent {
     'artwork': 'Уметничко дело'
   };
 
-
-
   ngOnInit() {
     this.heritageService.getHeritageSites().subscribe(
       a => {
@@ -108,6 +114,24 @@ export class MapComponent {
         source: this.vectorSource,
     });
     this.map.addLayer(vectorLayer);
-      
+    this.map.addOverlay(this.popup);
+    
+  }
+
+  @ViewChild('container', { read: ViewContainerRef }) container!: ViewContainerRef;
+
+  ngAfterViewInit(): void {
+    this.map.on('click', (evt) => {
+      const coords : Coordinate | undefined = this.map.forEachFeatureAtPixel(evt.pixel, d => {
+        return evt.coordinate;
+      });
+      const title = 'Popup Title';
+      const content = 'Popup Content';
+
+      const factory = this.componentFactoryResolver.resolveComponentFactory(PopupContentComponent);
+      const ref = this.container.createComponent(factory);
+
+      this.popup.show(coords!, ref.location.nativeElement);
+    });
   }
 }
