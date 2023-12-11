@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="side">
+        <form>
+            <input [(ngModel)]="queryName" (ngModelChange)="change()" type="text" name="name" placeholder="Name of Object">
+            <input [(ngModel)]="queryType" (ngModelChange)="change()" type="text" name="type" placeholder="Type of Object">
+        </form>
+        <h1>Results</h1>
+        <div>Check out the cultural heritage of your area.</div>
+        <div class="results">
+            <div *ngFor="let result of filteredSites" class="result">
+                <div>
+                    <h6>{{result.name}}</h6>
+                    <span *ngIf="result.historic != null">{{this.englishToMacedonian[result.historic]}}</span>
+                    <span *ngIf="result.tourism != null">{{this.englishToMacedonian[result.tourism]}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mapdiv"></div>
+</div>

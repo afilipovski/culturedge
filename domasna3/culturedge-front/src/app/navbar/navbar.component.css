@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #89B7B0;
+    padding: 10px 50px;
+    font-family: 'DM Sans', sans-serif !important;
+}
+.buttons {
+    margin-left:20px;
+}
+.logo,.buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.buttons>button {
+    margin: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color:#5C8980;
+    color: white;
+    font-size: large;
+    height: 50px;
+    padding-inline: 15px;
+}
+button {
+font-family: inherit;
+}
