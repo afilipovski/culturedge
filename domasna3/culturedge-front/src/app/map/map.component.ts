@@ -70,6 +70,7 @@ export class MapComponent implements AfterViewInit {
       const marker = new Feature({
         geometry: new Point(fromLonLat([site.lon, site.lat])),
       });
+      marker.set("name",site.name)
       this.vectorSource.addFeature(marker);
     });
   }
@@ -122,7 +123,10 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.map.on('click', (evt) => {
+      let featureName = ""
+
       const coords : Coordinate | undefined = this.map.forEachFeatureAtPixel(evt.pixel, d => {
+        featureName = d.get("name")
         return evt.coordinate;
       });
       const title = 'Popup Title';
@@ -130,6 +134,9 @@ export class MapComponent implements AfterViewInit {
 
       const factory = this.componentFactoryResolver.resolveComponentFactory(PopupContentComponent);
       const ref = this.container.createComponent(factory);
+
+      const instance = ref.instance;
+      instance.placeName = featureName
 
       this.popup.show(coords!, ref.location.nativeElement);
     });
