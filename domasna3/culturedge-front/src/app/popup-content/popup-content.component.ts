@@ -11,11 +11,12 @@ export class PopupContentComponent implements AfterContentInit {
     private http: HttpClient
   ) {}
     
-  baseUrl = 'http://localhost:8080'
+  baseUrl = 'http://localhost:8080';
 
-  placeName = ""
-  pictureUrl = ""
-  description = ""
+  placeName = "";
+  pictureUrl = "";
+  description = "";
+  editMode = false;
 
   ngAfterContentInit(): void {
     if (!this.placeName)
@@ -24,7 +25,6 @@ export class PopupContentComponent implements AfterContentInit {
     this.http.get(`${this.baseUrl}/description?name=${this.placeName}`,{responseType: 'text'}).subscribe(k => {
       this.description = k;
       console.log(this.description);
-            
     });
   }
 
@@ -49,6 +49,8 @@ export class PopupContentComponent implements AfterContentInit {
       this.http.post(`${this.baseUrl}/description`,descriptionData,{responseType: 'text'}).subscribe(k => {
       });
     }
+
+    this.editMode = false;
   }
 
   refreshPhoto() {
