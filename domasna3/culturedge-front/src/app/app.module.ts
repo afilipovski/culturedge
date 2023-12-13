@@ -8,7 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { MapComponent } from './map/map.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopupContentComponent } from './popup-content/popup-content.component';
 
 @NgModule({
@@ -23,7 +23,8 @@ import { PopupContentComponent } from './popup-content/popup-content.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

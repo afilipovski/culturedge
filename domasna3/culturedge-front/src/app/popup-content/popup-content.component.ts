@@ -1,22 +1,44 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component } from '@angular/core';
-import { GoogleSearchService } from '../google-search.service';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-popup-content',
   templateUrl: './popup-content.component.html',
   styleUrls: ['./popup-content.component.css']
 })
-export class PopupContentComponent implements AfterViewInit {
+export class PopupContentComponent implements OnInit, AfterContentInit {
   constructor(
-    private googleSearch : GoogleSearchService
+    private http: HttpClient
   ) {}
-  ngAfterViewInit(): void {
-    if (!this.placeName)
-      return;
-    console.log(this.placeName);
-    this.googleSearch.getPicture(this.placeName).subscribe(url => this.pictureUrl = url);
+    
+  baseUrl = 'http://localhost:8080/photo'
+
+  ngOnInit(): void {
+    
   }
+
   placeName = ""
   pictureUrl = ""
+  description = ""
+
+  ngAfterContentInit(): void {
+    if (!this.placeName)
+      return;
+    this.pictureUrl = `${this.baseUrl}?name=${this.placeName}`
+  }
+
+  selectedFile! : File;
+  onFileChanged(event: Event) {
+    this.selectedFile = (event.target as HTMLInputElement).files![0];
+  }
+
+  onSubmit() {
+    console.log(this.selectedFile);
+    
+    const photoUploadData = new FormData();
+    photoUploadData.append('file',this.selectedFile,this.selectedFile.name);
+    photoUploadData.append('name',this.placeName);
+
+    this.http.post(this.baseUrl,photoUploadData).subscribe(a => console.log(a));
+  }
 }

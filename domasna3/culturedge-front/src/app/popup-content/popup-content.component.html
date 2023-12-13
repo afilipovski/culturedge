@@ -1,2 +1,7 @@
-<img [src]="pictureUrl" alt="">
-<p>{{placeName}}</p>
+<form class="container" (ngSubmit)="onSubmit()">
+    <img [src]="pictureUrl" alt="">
+    <span class="name">{{placeName}}</span>
+    <input type="text" name="desc" id="" [(ngModel)]="description">
+    <input type="file" name="file" (change)="onFileChanged($event)">
+    <input type="submit" value="save">
+</form>
