@@ -19,7 +19,7 @@ public class DescriptionController {
     public String getDescription(@RequestParam String name) {
         String res = descriptionService.getByName(name);
         if (res == null)
-            throw new ResponseStatusException(NOT_FOUND);
+            return "";
         return res;
     }
 

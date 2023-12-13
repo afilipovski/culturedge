@@ -24,7 +24,6 @@ export class PopupContentComponent implements AfterContentInit {
     this.refreshPhoto();
     this.http.get(`${this.baseUrl}/description?name=${this.placeName}`,{responseType: 'text'}).subscribe(k => {
       this.description = k;
-      console.log(this.description);
     });
   }
 
