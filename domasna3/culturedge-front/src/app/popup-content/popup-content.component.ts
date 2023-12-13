@@ -24,7 +24,7 @@ export class PopupContentComponent implements OnInit, AfterContentInit {
   ngAfterContentInit(): void {
     if (!this.placeName)
       return;
-    this.pictureUrl = `${this.baseUrl}?name=${this.placeName}`
+    this.refreshPhoto();
   }
 
   selectedFile! : File;
@@ -39,6 +39,12 @@ export class PopupContentComponent implements OnInit, AfterContentInit {
     photoUploadData.append('file',this.selectedFile,this.selectedFile.name);
     photoUploadData.append('name',this.placeName);
 
-    this.http.post(this.baseUrl,photoUploadData).subscribe(a => console.log(a));
+    this.http.post(this.baseUrl,photoUploadData,{responseType: 'text'}).subscribe(k => {
+      this.refreshPhoto();
+    })
+  }
+
+  refreshPhoto() {
+    this.pictureUrl = `${this.baseUrl}?name=${this.placeName}&lastmod=${Date.now()}`
   }
 }
