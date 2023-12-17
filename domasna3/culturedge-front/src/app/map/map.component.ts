@@ -126,7 +126,7 @@ export class MapComponent implements AfterViewInit {
       let featureName = ""
 
       const coords : Coordinate | undefined = this.map.forEachFeatureAtPixel(evt.pixel, d => {
-        featureName = d.get("name")
+        featureName = d.get("name");
         return evt.coordinate;
       });
 
@@ -135,15 +135,23 @@ export class MapComponent implements AfterViewInit {
         return;
       }
 
-      const factory = this.componentFactoryResolver.resolveComponentFactory(PopupContentComponent);
-      const ref = this.container.createComponent(factory);
-
-      const instance = ref.instance;
-      instance.placeName = featureName;
-      instance.lat = Math.round(coords[0]/10)/10000;
-      instance.lon = Math.round(coords[1]/10)/10000;
-
-      this.popup.show(coords!, ref.location.nativeElement);
+      this.popupAtCoords(featureName, coords);
     });
+  }
+
+  sideElementClick(name : string, lonlat : number[]) {
+    this.popupAtCoords(name,fromLonLat(lonlat))
+  }
+
+  popupAtCoords(placeName : string, coords : Coordinate) {
+    const factory = this.componentFactoryResolver.resolveComponentFactory(PopupContentComponent);
+    const ref = this.container.createComponent(factory);
+
+    const instance = ref.instance;
+    instance.placeName = placeName;
+    instance.lat = Math.round(coords[0]/10)/10000;
+    instance.lon = Math.round(coords[1]/10)/10000;
+
+    this.popup.show(coords!, ref.location.nativeElement);
   }
 }
