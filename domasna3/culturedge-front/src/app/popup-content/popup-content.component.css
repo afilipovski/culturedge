@@ -53,3 +53,16 @@ button, .save-button {
     resize: none;
     height: 100px;
 }
+.controls {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.photo-input {
+    display: none;
+}
+
+textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+}

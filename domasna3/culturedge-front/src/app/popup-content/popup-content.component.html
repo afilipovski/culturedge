@@ -2,14 +2,25 @@
     <div class="arrow"></div>
     <span class="name">{{placeName}}</span>
     <img [src]="pictureUrl" alt="">
-    <form *ngIf="editMode" (ngSubmit)="onSubmit()">
-        <textarea class="desc-input" type="text" name="desc" id="" [(ngModel)]="description"></textarea>
-        <input type="file" name="file" (change)="onFileChanged($event)">
-        <input class="save-button" type="submit" value="Save">
-    </form>
+
+    <!-- DESC + COORDS -->
+    
     <div *ngIf="!editMode">
         <div class="description">{{description}}</div>
+    </div>
+    <form *ngIf="editMode" (ngSubmit)="onSubmit()">
+        <textarea class="desc-input" type="text" name="desc" id="" [(ngModel)]="description"></textarea>
+    </form>
+
+    <strong>Coordinates: {{lat}}°N {{lon}}°E</strong>
+
+    <!-- CONTROLS -->
+    <div *ngIf="!editMode">
         <button (click)="editMode = true">Edit</button>
     </div>
-    <div></div>
+    <div *ngIf="editMode" class="controls">
+        <input class="photo-input" type="file" name="file" accept="image/png, image/jpeg" (change)="onFileChanged($event)" #photoInput>
+        <input class="save-button" type="submit" value="Save" (click)="onSubmit()">
+        <button (click)="photoInput.click()">+ Upload Photo</button>
+    </div>
 </div>

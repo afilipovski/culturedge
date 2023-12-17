@@ -129,14 +129,19 @@ export class MapComponent implements AfterViewInit {
         featureName = d.get("name")
         return evt.coordinate;
       });
-      const title = 'Popup Title';
-      const content = 'Popup Content';
+
+      if (!coords) {
+        this.popup.hide();
+        return;
+      }
 
       const factory = this.componentFactoryResolver.resolveComponentFactory(PopupContentComponent);
       const ref = this.container.createComponent(factory);
 
       const instance = ref.instance;
-      instance.placeName = featureName
+      instance.placeName = featureName;
+      instance.lat = Math.round(coords[0]/10)/10000;
+      instance.lon = Math.round(coords[1]/10)/10000;
 
       this.popup.show(coords!, ref.location.nativeElement);
     });
