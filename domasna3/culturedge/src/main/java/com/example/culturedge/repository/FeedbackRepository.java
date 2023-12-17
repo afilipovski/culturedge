@@ -3,18 +3,17 @@ package com.example.culturedge.repository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Repository
 public class FeedbackRepository {
-    HashMap<String, List<String>> inMemoryData = new HashMap<>();
+    List<String> inMemoryData = new ArrayList<>();
 
-    public List<String> getFeedbackByName(String name) {
-        return inMemoryData.get(name);
+    public List<String> getAll() {
+        return inMemoryData;
     }
-    public void addFeedbackByName(String name, String feedback) {
-        inMemoryData.putIfAbsent(name,new ArrayList<>());
-        inMemoryData.get(name).add(feedback);
+
+    public void addFeedback(String feedback) {
+        inMemoryData.add(feedback);
     }
 }

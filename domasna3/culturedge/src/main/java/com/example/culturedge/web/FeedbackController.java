@@ -3,7 +3,6 @@ package com.example.culturedge.web;
 import com.example.culturedge.service.FeedbackService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,15 +15,12 @@ public class FeedbackController {
     }
 
     @GetMapping("/feedback")
-    public List<String> getFeedback(@RequestParam String name) {
-        List<String> res = feedbackService.getFeedbackByName(name);
-        if (res == null)
-            return new ArrayList<>();
-        return res;
+    public List<String> getFeedback() {
+        return feedbackService.getAll();
     }
 
     @PostMapping("/feedback")
-    public void addFeedback(@RequestParam String name, @RequestParam String feedback) {
-        feedbackService.addFeedbackByName(name,feedback);
+    public void addFeedback(@RequestParam String feedback) {
+        feedbackService.addFeedbackByName(feedback);
     }
 }

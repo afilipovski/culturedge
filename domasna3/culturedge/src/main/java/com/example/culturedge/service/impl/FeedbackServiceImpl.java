@@ -15,12 +15,12 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
-    public List<String> getFeedbackByName(String name) {
-        return feedbackRepository.getFeedbackByName(name);
+    public List<String> getAll() {
+        return feedbackRepository.getAll();
     }
 
     @Override
-    public void addFeedbackByName(String name, String feedback) {
-        feedbackRepository.addFeedbackByName(name,feedback);
+    public void addFeedbackByName(String feedback) {
+        feedbackRepository.addFeedback(feedback);
     }
 }
