@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api")
 public class PhotoController {
     public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/images";
     @GetMapping(value = "/photo", produces = MediaType.IMAGE_JPEG_VALUE)

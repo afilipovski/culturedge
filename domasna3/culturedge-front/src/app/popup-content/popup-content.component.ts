@@ -11,7 +11,7 @@ export class PopupContentComponent implements AfterContentInit {
     private http: HttpClient
   ) {}
     
-  baseUrl = 'http://localhost:8080';
+  baseUrl = '/api';
 
   placeName = "";
   lat !: number;

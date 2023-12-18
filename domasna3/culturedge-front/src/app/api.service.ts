@@ -7,12 +7,12 @@ import { IHeritageSite } from './IHeritageSite';
 @Injectable({
   providedIn: 'root'
 })
-export class HeritageService {
+export class ApiService {
   constructor(
     private http: HttpClient  
   ) { }
 
   getHeritageSites() : Observable<IHeritageSite[]> {
-    return this.http.get<IHeritageSite[]>('http://localhost:8080/sites')
+    return this.http.get<IHeritageSite[]>('/api/sites')
   }
 }

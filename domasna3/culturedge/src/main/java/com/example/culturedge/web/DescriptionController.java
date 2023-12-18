@@ -2,12 +2,9 @@ package com.example.culturedge.web;
 
 import com.example.culturedge.service.DescriptionService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api")
 public class DescriptionController {
     final DescriptionService descriptionService;
 

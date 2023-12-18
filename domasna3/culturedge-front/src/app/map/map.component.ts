@@ -7,7 +7,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
-import { HeritageService } from '../heritage.service';
+import { ApiService } from '../api.service';
 import { IHeritageSite } from '../IHeritageSite';
 import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
@@ -30,7 +30,7 @@ interface TranslationDictionary {
 })
 export class MapComponent implements AfterViewInit {
   constructor (
-    private heritageService : HeritageService,
+    private heritageService : ApiService,
     private componentFactoryResolver : ComponentFactoryResolver
   ) {}
 
