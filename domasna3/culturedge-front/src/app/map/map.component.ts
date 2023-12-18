@@ -155,3 +155,5 @@ export class MapComponent implements AfterViewInit {
     this.popup.show(coords!, ref.location.nativeElement);
   }
 }
+
+
