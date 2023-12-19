@@ -12,7 +12,7 @@ import { IHeritageSite } from '../IHeritageSite';
 import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
-import { fromLonLat } from 'ol/proj';
+import { fromLonLat, toLonLat } from 'ol/proj';
 import VectorLayer from 'ol/layer/Vector';
 import Popup from 'ol-popup';
 import { Coordinate } from 'ol/coordinate';
@@ -147,11 +147,16 @@ export class MapComponent implements AfterViewInit {
     const factory = this.componentFactoryResolver.resolveComponentFactory(PopupContentComponent);
     const ref = this.container.createComponent(factory);
 
+    
     const instance = ref.instance;
     instance.placeName = placeName;
-    instance.lat = Math.round(coords[0]/10)/10000;
-    instance.lon = Math.round(coords[1]/10)/10000;
-
+    
     this.popup.show(coords!, ref.location.nativeElement);
+    
+
+    coords = toLonLat(coords);
+    instance.lat = Math.round(coords[1]*10000)/10000;
+    instance.lon = Math.round(coords[0]*10000)/10000;
+
   }
 }
