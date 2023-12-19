@@ -22,7 +22,7 @@
     border-radius: 5px;
     border: none;
     background-color:#5C8980;
-    color: white;
+    color: #89B7B0;
     font-size: large;
     height: 50px;
     padding-inline: 15px;
@@ -30,3 +30,4 @@
 button {
 font-family: inherit;
 }
+

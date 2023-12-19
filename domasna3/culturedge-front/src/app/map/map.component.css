@@ -26,6 +26,8 @@ h1 {
     color: #8BB8B0;
     font-weight: 100;
 }
+
+
 h6,span {
     margin:4px;
     padding:5px;
@@ -78,3 +80,7 @@ span {
     flex: 1;
 }
 
+.text{
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 10px;
+}
