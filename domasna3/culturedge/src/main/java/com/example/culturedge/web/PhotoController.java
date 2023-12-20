@@ -17,7 +17,7 @@ public class PhotoController {
     public @ResponseBody byte[] getPhoto(@RequestParam String name) throws IOException {
         UUID uuid = UUID.nameUUIDFromBytes(name.getBytes());
         File f = new File(UPLOAD_DIRECTORY + "\\" + uuid + ".jpg");
-        File noneFound = new File(UPLOAD_DIRECTORY + "\\none-found.jpg");
+        File noneFound = new File(UPLOAD_DIRECTORY + "/none-found.jpg");
         if (!f.exists())
             try (FileInputStream fis = new FileInputStream(noneFound)) {
                 return fis.readAllBytes();
