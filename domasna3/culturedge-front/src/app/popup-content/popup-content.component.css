@@ -1,36 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 img {
-    width: 100%;
-    max-height: 150px;
     object-fit: contain;
     margin: 10px 0;
+    border: 10px solid #8BB8B0;
+    border-radius: 20px;
 }
 .name {
-    font-size: larger;
-    font-weight: bold;
+    font-size: x-large;
     display: block;
+    font-family: 'DM Sans', sans-serif;
+    color: #33484E;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+
 }
 input {
     display: block;
 }
 .container {
-    background: #89B7B0;
+    background: #B9DBD5;
     padding: 10px;
     margin-top: 20px;
-    font-family: 'Roboto', sans-serif;
-    border: 15px solid #5C8980;
+    font-family: 'DM Sans', sans-serif;
+    color : #33484E;
+    font-weight: 400;
+    border: 15px solid #8BB8B0;
     border-radius: 0px 10px 10px 10px;
     width: 30vw;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 .arrow {
 	width: 0;
 	height: 0;
-	border-bottom: 20px solid #5C8980;
+	border-bottom: 20px solid #8BB8B0;
 	border-right: 20px solid transparent;
     top:2px;
     left:0px;
     position: absolute;
+
 }
 .description {
     overflow: hidden;
@@ -42,8 +50,8 @@ input {
 button, .save-button {
     border-radius: 5px;
     border: none;
-    background-color:#5C8980;
-    color: white;
+    background-color:#8BB8B0;
+    color: #B9DBD5;
     font-size: large;
     padding: 10px;
     margin-top: 2px;

@@ -51,7 +51,6 @@ export class PopupContentComponent implements AfterContentInit {
       })
     }
   }
-
   postDescription() {
     if (this.description) {
       const descriptionData = new FormData();

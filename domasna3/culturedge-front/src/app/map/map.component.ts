@@ -138,9 +138,10 @@ export class MapComponent implements AfterViewInit {
       this.popupAtCoords(featureName, coords);
     });
   }
-
-  sideElementClick(name : string, lonlat : number[]) {
+  clickedResult: any | null = null;
+  sideElementClick(name : string, lonlat : number[], result: any) {
     this.popupAtCoords(name,fromLonLat(lonlat))
+    this.clickedResult = result;
   }
 
   popupAtCoords(placeName : string, coords : Coordinate) {
