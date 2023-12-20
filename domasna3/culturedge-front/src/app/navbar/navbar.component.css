@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
+body {
+    margin: 0;
+}
 
 .container {
     display: flex;
@@ -9,25 +11,44 @@
     padding: 10px 50px;
     font-family: 'DM Sans', sans-serif !important;
 }
+
 .buttons {
-    margin-left:20px;
+    margin-left: 20px;
 }
-.logo,.buttons {
+
+.logo,
+.buttons {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
 }
-.buttons>button {
+
+.buttons > button {
     margin: 20px;
     border-radius: 5px;
     border: none;
-    background-color:#5C8980;
-    color: #89B7B0;
+    color: #5C8980;
     font-size: large;
     height: 50px;
     padding-inline: 15px;
-}
-button {
-font-family: inherit;
+    cursor: pointer;
 }
 
+.buttons > button:active{
+    background-color: #5C8980;
+    color: #ffffff;
+}
+.buttons > button:focus {
+    background-color: #5C8980;
+    color: #ffffff;
+}
+
+.buttons > button:hover {
+    color: #89B7B0;
+    background-color: #5C8980;
+}
+
+button {
+    font-family: inherit;
+    outline: none; /* Remove default focus outline */
+}
