@@ -16,7 +16,7 @@ public class TagRemovalFilter implements Filter<List<Node>, List<CulturalHeritag
                         node.lat,
                         node.lon,
                         node.getProperty("historic"),
-                        node.getProperty("tourism"))).collect(Collectors.toList());
+                        node.getProperty("tourism"), "", "")).collect(Collectors.toList());
 
     }
 
