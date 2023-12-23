@@ -1224,12 +1224,6 @@
 		<tag k="historic" v="monument"/>
 		<tag k="name" v="Сергеј Есенин"/>
 	</node>
-	<node id="5046404750" lat="41.8261539" lon="20.5407174" version="1" timestamp="2017-08-20T14:30:30Z" changeset="0">
-		<tag k="historic" v="memorial"/>
-		<tag k="memorial" v="stone"/>
-		<tag k="name" v="Varri i Metalise"/>
-		<tag k="tourism" v="attraction"/>
-	</node>
 	<node id="5055432425" lat="42.0769461" lon="22.1823517" version="4" timestamp="2021-11-11T00:09:44Z" changeset="0">
 		<tag k="historic" v="monument"/>
 		<tag k="int_name" v="Emin-beg Kula"/>
@@ -2043,26 +2037,6 @@
 		<tag k="memorial" v="plaque"/>
 		<tag k="name" v="Атентат на Киро Глигоров"/>
 		<tag k="name:en" v="Atentat of Kiro Gligorov"/>
-	</node>
-	<node id="9447094183" lat="41.3350488" lon="22.8310072" version="1" timestamp="2022-01-25T10:38:32Z" changeset="0">
-		<tag k="historic" v="ruins"/>
-		<tag k="name" v="Ερείπια"/>
-	</node>
-	<node id="9447094184" lat="41.3384632" lon="22.8589223" version="1" timestamp="2022-01-25T10:38:32Z" changeset="0">
-		<tag k="historic" v="ruins"/>
-		<tag k="name" v="Ερείπια"/>
-	</node>
-	<node id="9447094185" lat="41.3411509" lon="22.9086828" version="1" timestamp="2022-01-25T10:38:32Z" changeset="0">
-		<tag k="historic" v="ruins"/>
-		<tag k="name" v="Ερείπια"/>
-	</node>
-	<node id="9447094186" lat="41.3408906" lon="22.911526" version="1" timestamp="2022-01-25T10:38:32Z" changeset="0">
-		<tag k="historic" v="ruins"/>
-		<tag k="name" v="Ερείπια"/>
-	</node>
-	<node id="9447094187" lat="41.3380718" lon="22.9380143" version="1" timestamp="2022-01-25T10:38:32Z" changeset="0">
-		<tag k="historic" v="ruins"/>
-		<tag k="name" v="Ερείπια"/>
 	</node>
 	<node id="9633312940" lat="41.3643261" lon="21.6070578" version="1" timestamp="2022-04-03T12:21:20Z" changeset="0">
 		<tag k="access" v="yes"/>
