@@ -1,4 +1,4 @@
-package com.example.culturedge.models;
+package com.example.culturedge.helpers;
 
 public class DConfig {
     public String converterCommand;

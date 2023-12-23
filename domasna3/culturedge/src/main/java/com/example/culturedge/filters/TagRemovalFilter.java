@@ -1,7 +1,7 @@
 package com.example.culturedge.filters;
 
 import com.example.culturedge.models.CulturalHeritage;
-import com.example.culturedge.models.Node;
+import com.example.culturedge.helpers.Node;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package com.example.culturedge.models;
+package com.example.culturedge.helpers;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
