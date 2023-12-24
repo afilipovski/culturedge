@@ -36,3 +36,19 @@ body {
     margin-bottom: 30px;
     font-size: 0.7em;
 }
+
+@media only screen and (max-width: 768px) {
+    body{
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #33484E;
+        display: block;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+    }
+
+}
