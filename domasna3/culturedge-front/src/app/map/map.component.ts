@@ -17,6 +17,7 @@ import VectorLayer from 'ol/layer/Vector';
 import Popup from 'ol-popup';
 import { Coordinate } from 'ol/coordinate';
 import { PopupContentComponent } from '../popup-content/popup-content.component';
+import { LocationService } from '../geolocation.component';
 
 
 interface TranslationDictionary {
@@ -29,9 +30,11 @@ interface TranslationDictionary {
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements AfterViewInit {
+  userLocation: { latitude: number; longitude: number } | null = null;
   constructor (
     private heritageService : ApiService,
-    private componentFactoryResolver : ComponentFactoryResolver
+    private componentFactoryResolver : ComponentFactoryResolver,
+    private locationService: LocationService
   ) {}
 
   sites : IHeritageSite[] = []
@@ -119,9 +122,14 @@ export class MapComponent implements AfterViewInit {
     const vectorLayer = new VectorLayer({
         source: this.vectorSource,
     });
+
     this.map.addLayer(vectorLayer);
     this.map.addOverlay(this.popup);
-    
+    this.locationService.getLocationObservable().subscribe(
+        (location: { latitude: number; longitude: number } | null) => {
+          this.userLocation = location;
+        }
+    );
   }
 
   @ViewChild('container', { read: ViewContainerRef }) container!: ViewContainerRef;
