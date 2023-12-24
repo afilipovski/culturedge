@@ -11,6 +11,7 @@
     flex-flow: row nowrap;
     height: calc(100vh - 120px);
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 input {
     border-radius: 5px;
@@ -21,6 +22,7 @@ input {
     margin-bottom:20px;
     display: block;
 }
+
 h1 {
     font-family: 'Poppins', sans-serif;
     color: #8BB8B0;
@@ -33,7 +35,7 @@ h6,span {
 }
 h6 {
     font-size: x-large;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     color : #535353;
     font-weight: 400;
 }
@@ -41,7 +43,7 @@ span {
     font-size: smaller;
 }
 .result {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: large;
     background-color: white;
     color: #8F8E8E;

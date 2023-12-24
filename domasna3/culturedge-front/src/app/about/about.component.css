@@ -7,37 +7,3 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
 }
-
-.site-footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    background-color: #89B7B0;
-    padding: 80px 50px;
-    font-family: 'Poppins', sans-serif;
-    color: #405F59;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-a{
-    text-decoration: none;
-    color: #405F59;
-}
-span {
-    font-size: 24px;
-}
-.contact-column,
-.help-column{
-    padding: 10px;
-}
-.policy-column{
-    padding-top: 55px;
-}
-
-.contact-column h1,
-.help-column h1{
-    margin-top: 0;
-}
-
