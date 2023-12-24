@@ -13,6 +13,7 @@ import { PopupContentComponent } from './popup-content/popup-content.component';
 import { FaqComponent } from './faq/faq.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { PrivacyandtermsComponent } from './privacyandterms/privacyandterms.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PrivacyandtermsComponent } from './privacyandterms/privacyandterms.comp
     PopupContentComponent,
     FaqComponent,
     FeedbackComponent,
-      PrivacyandtermsComponent
+      PrivacyandtermsComponent,
+      FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,4 +37,6 @@ import { PrivacyandtermsComponent } from './privacyandterms/privacyandterms.comp
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

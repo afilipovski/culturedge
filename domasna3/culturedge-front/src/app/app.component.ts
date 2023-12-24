@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'culturedge-front';
+  constructor(private router: Router) {}
+
+  shouldShowNavbar(): boolean {
+    return this.router.url !== '/map';
+  }
 }
