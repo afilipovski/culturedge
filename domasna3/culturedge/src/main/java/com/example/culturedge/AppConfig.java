@@ -11,4 +11,8 @@ public class AppConfig {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
+//    @Bean
+//    public JavaMailSender javaMailSender() { return new JavaMailSenderImpl(); }
+
 }

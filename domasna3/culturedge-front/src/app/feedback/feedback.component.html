@@ -18,7 +18,7 @@
                 <button (click)="editMode = true">Submit the feedback</button>
             </div>
             <div *ngIf="editMode" class="controls">
-                <input class="save-button" type="submit" value="Submit" (click)="onSubmit()">
+                <input class="save-button" type="submit" value="Submit" (click)="postFeedback()">
             </div>
         </form>
     </div>

@@ -5,5 +5,5 @@ import java.util.List;
 public interface FeedbackService {
     List<String> getAll();
 
-    void addFeedbackByName(String feedback);
+    void sendFeedback(String name, String email, String message);
 }

@@ -20,7 +20,9 @@ public class FeedbackController {
     }
 
     @PostMapping("/feedback")
-    public void addFeedback(@RequestParam String feedback) {
-        feedbackService.addFeedbackByName(feedback);
+    public void addFeedback(@RequestParam String name,
+                            @RequestParam String email,
+                            @RequestParam String message) {
+        feedbackService.sendFeedback(name, email, message);
     }
 }
