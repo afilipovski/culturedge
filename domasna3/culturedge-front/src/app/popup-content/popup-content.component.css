@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 img {
     object-fit: contain;
     margin: 10px 0;
     border: 10px solid #8BB8B0;
     border-radius: 20px;
+    max-height: 90vh;
+    max-width: 90%;
 }
 .name {
     font-size: x-large;
     display: block;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #33484E;
     font-weight: bold;
     letter-spacing: 0.05em;
@@ -22,7 +24,7 @@ input {
     background: #B9DBD5;
     padding: 10px;
     margin-top: 20px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color : #33484E;
     font-weight: 400;
     border: 15px solid #8BB8B0;
@@ -71,6 +73,6 @@ button, .save-button {
 }
 
 textarea {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: large;
 }
