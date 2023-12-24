@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-
 body {
     margin: 0;
     font-size: 16px;
@@ -31,7 +30,12 @@ body {
     width: 6em;
 }
 
-.logo .letters {
+.logo  {
+    width: 9em;
+}
+
+.letters{
+    padding-top: 10%;
     width: 9em;
 }
 
@@ -55,7 +59,7 @@ body {
 }
 
 button {
-    font-family: inherit;
+    font-family: 'Poppins', sans-serif;
     outline: none;
 }
 
@@ -69,7 +73,6 @@ button {
 .dropdown-content {
     display: none;
     position: absolute;
-
     z-index: 1;
 }
 
