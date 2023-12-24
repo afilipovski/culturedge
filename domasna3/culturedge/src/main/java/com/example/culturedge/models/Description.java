@@ -18,8 +18,7 @@ public class Description {
     public Description() {
     }
 
-    public Description(CulturalHeritage culturalHeritage, String description) {
-        this.culturalHeritage = culturalHeritage;
+    public void setDescription(String description) {
         this.description = description;
     }
 
