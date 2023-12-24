@@ -7,22 +7,62 @@
     text-align: left;
     background: #B9DBD5;
     color: #33484E;
-    font-size: x-large;
+    font-size: 1em;
     font-family: 'DM Sans', sans-serif;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
 
 }
 
 h1 {
     text-align: center;
     color: #33484E;
-    font-size: 3em;
+    font-size: 2.5em;
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     letter-spacing: 0.05em;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+
 
 }
 
 body {
     padding-top: 40px;
+}
+
+
+.site-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #89B7B0;
+    padding: 5em 3.125em; /* Adjusted padding using em units */
+    font-family: 'Poppins', sans-serif;
+    color: #405F59;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25em; /* Adjusted gap using em units */
+}
+a {
+    text-decoration: none;
+    color: #405F59;
+}
+
+span {
+    font-size: 1em;
+}
+
+.contact-column,
+.help-column {
+    padding: 0.625em;
+}
+
+.policy-column {
+    padding-top: 1.875em;
+}
+
+.contact-column h1,
+.help-column h1 {
+    margin-top: 0;
 }
