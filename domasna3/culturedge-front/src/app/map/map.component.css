@@ -78,6 +78,7 @@ span {
 
 .result-details {
     flex: 1;
+    position: relative;
 }
 
 .text{
@@ -85,3 +86,8 @@ span {
     padding-bottom: 10px;
 }
 
+.cityname {
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
+}

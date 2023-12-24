@@ -59,7 +59,7 @@ export class MapComponent implements AfterViewInit {
   change() {
     this.filteredSites = this.sites
         .filter(a => a.name.toLowerCase().includes(this.queryName.toLowerCase()))
-        .filter(a => a.city.toLowerCase().includes(this.queryCity.toLowerCase()))
+        .filter(a => !a.city || a.city.toLowerCase().includes(this.queryCity.toLowerCase()))
         .filter(a => {
           let tokens = []
           if (a.historic != null) tokens.push(this.englishToMacedonian[a.historic])
