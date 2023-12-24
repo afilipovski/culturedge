@@ -112,13 +112,14 @@ button {
     background-color: #5C8980;
 }
 
-/* Media Query for smaller screens */
+
 @media only screen and (max-width: 768px) {
     .container {
         flex-direction: column;
         align-items: center;
         text-align: center;
         padding: 0.325em 0.625em;
+        font-size: 0.75em;
     }
 
     .buttons {
@@ -130,11 +131,8 @@ button {
         margin: 0.75em;
     }
 
-    .language-selector {
-        margin-top: 0.75em;
-    }
-
     .buttons > .language-selector > button {
         margin: 0.75em;
+        margin-right: 8vw;
     }
 }

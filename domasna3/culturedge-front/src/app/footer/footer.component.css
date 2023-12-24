@@ -30,5 +30,29 @@ span {
 .contact-column h1,
 .help-column h1{
     margin-top: 0;
+
+}
+@media only screen and (max-width: 768px) {
+    .site-footer {
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        padding: 20px;
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    span {
+        font-size: 15px;
+    }
+
+    .policy-column {
+        padding-top: 30px;
+        padding-bottom: 7vh;
+    }
 }
 

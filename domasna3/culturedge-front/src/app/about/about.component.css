@@ -6,4 +6,111 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
+    background-attachment: fixed;
+    overflow: hidden;
 }
+
+
+
+.hero-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 65vh;
+    color: #011b1c;
+
+    padding-top: 2vh;
+}
+
+.hero-text {
+    max-width: 40%;
+    text-align: left;
+}
+
+.subtitle, .title, .first, .second {
+    font-family: 'Poppins', sans-serif;
+}
+
+.subtitle {
+    font-size: 0.8em;
+    margin: 0;
+    font-weight: bold;
+    padding-top: 10vh;
+    padding-left: 2vw;
+}
+
+.title {
+    font-size: 2.5em;
+    font-weight: bold;
+    padding-top: 1vh;
+    padding-left: 2vw;
+}
+
+.first,
+.second {
+    font-size: 0.9em;
+    line-height: 1.5;
+
+}
+
+.first{
+    padding-left: 11vw;
+    padding-top: 2vh;
+    padding-right: 2vh;
+}
+.second{
+     padding-left: 14vw;
+     padding-top: 2vh;
+    padding-right: 2vh;
+ }
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+
+    .hero-container {
+        height: 70%; /* Adjusted height for smaller screens */
+        justify-content: flex-start; /* Align text to the top for smaller screens */
+        padding: 10px; /* Adjusted padding for smaller screens */
+    }
+
+    .hero-text {
+        max-width: 100%; /* Adjusted max-width for smaller screens */
+        text-align: left;
+    }
+
+    .subtitle {
+        font-size: 1.1em;
+        margin: 0;
+        font-weight: bold;
+        padding-top: 5vh;
+    }
+
+    .title {
+        font-size: 2em; /* Adjusted font size for smaller screens */
+        font-weight: bold;
+        padding-top: 1vh; /* Adjusted padding-top for smaller screens */
+    }
+
+    .first, .second {
+        font-size: 0.8em; /* Adjusted font size for smaller screens */
+        line-height: 1.5;
+        padding-left: 10px; /* Adjusted padding for smaller screens */
+        padding-right: 10px; /* Adjusted padding for smaller screens */
+        padding-top: 1vh; /* Adjusted padding-top for smaller screens */
+    }
+
+    .first {
+        padding-top: 2vh; /* Additional padding-top for smaller screens */
+    }
+
+    .second {
+        padding-top: 2vh; /* Additional padding-top for smaller screens */
+    }
+    body {
+        background-position: right center;
+
+    }
+
+}
+
