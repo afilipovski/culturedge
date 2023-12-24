@@ -39,6 +39,7 @@ export class MapComponent implements AfterViewInit {
 
   queryName : string = ''
   queryType : string = ''
+  queryCity : string = ''
 
   vectorSource = new VectorSource()
   map = new Map({
@@ -57,13 +58,16 @@ export class MapComponent implements AfterViewInit {
 
   change() {
     this.filteredSites = this.sites
-    .filter(a => a.name.toLowerCase().includes(this.queryName.toLowerCase()))
-    .filter(a => {
-      let tokens = []
-      if (a.historic != null) tokens.push(this.englishToMacedonian[a.historic])
-      if (a.tourism != null) tokens.push(this.englishToMacedonian[a.tourism])
-      return tokens.findIndex(a => a.toLowerCase().includes(this.queryType.toLowerCase())) != -1
-    })
+        .filter(a => a.name.toLowerCase().includes(this.queryName.toLowerCase()))
+        .filter(a => a.city.toLowerCase().includes(this.queryCity.toLowerCase()))
+        .filter(a => {
+          let tokens = []
+          if (a.historic != null) tokens.push(this.englishToMacedonian[a.historic])
+          if (a.tourism != null) tokens.push(this.englishToMacedonian[a.tourism])
+          return tokens.findIndex(a => a.toLowerCase().includes(this.queryType.toLowerCase())) != -1
+
+        })
+
 
     this.vectorSource.clear();
     this.filteredSites.forEach(site => {
@@ -71,6 +75,7 @@ export class MapComponent implements AfterViewInit {
         geometry: new Point(fromLonLat([site.lon, site.lat])),
       });
       marker.set("name",site.name)
+      marker.set("city",site.city)
       this.vectorSource.addFeature(marker);
     });
   }
@@ -124,9 +129,11 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.map.on('click', (evt) => {
       let featureName = ""
+      let featureCity: string = ""
 
       const coords : Coordinate | undefined = this.map.forEachFeatureAtPixel(evt.pixel, d => {
         featureName = d.get("name");
+        featureCity = d.get("city");
         return evt.coordinate;
       });
 
@@ -135,23 +142,24 @@ export class MapComponent implements AfterViewInit {
         return;
       }
 
-      this.popupAtCoords(featureName, coords);
+      this.popupAtCoords(featureName, coords, featureCity);
     });
   }
   clickedResult: any | null = null;
-  sideElementClick(name : string, lonlat : number[], result: any) {
-    this.popupAtCoords(name,fromLonLat(lonlat))
+  sideElementClick(name : string, lonlat : number[], city : string,result: any) {
+    this.popupAtCoords(name,fromLonLat(lonlat), city)
     this.clickedResult = result;
   }
 
-  popupAtCoords(placeName : string, coords : Coordinate) {
+  popupAtCoords(placeName : string, coords : Coordinate, cityName : string) {
     const factory = this.componentFactoryResolver.resolveComponentFactory(PopupContentComponent);
     const ref = this.container.createComponent(factory);
 
     
     const instance = ref.instance;
     instance.placeName = placeName;
-    
+    instance.cityName = cityName;
+
     this.popup.show(coords!, ref.location.nativeElement);
     
 

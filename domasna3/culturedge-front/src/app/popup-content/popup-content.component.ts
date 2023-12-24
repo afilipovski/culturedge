@@ -12,7 +12,7 @@ export class PopupContentComponent implements AfterContentInit {
   ) {}
     
   baseUrl = '/api';
-
+  cityName :string = "";
   placeName = "";
   lat !: number;
   lon !: number;

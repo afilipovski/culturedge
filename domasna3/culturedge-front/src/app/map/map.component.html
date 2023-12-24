@@ -3,7 +3,7 @@
         <form>
             <input [(ngModel)]="queryName" (ngModelChange)="change()" type="text" name="name"  class="custom-form" placeholder="Name of Object">
             <input [(ngModel)]="queryType" (ngModelChange)="change()" type="text" name="type"  class="custom-form" placeholder="Type of Object">
-            <input [(ngModel)]="queryType" (ngModelChange)="change()" type="text" name="type"  class="custom-form" placeholder="City or Town">
+            <input [(ngModel)]="queryCity" (ngModelChange)="change()" type="text" name="city"  class="custom-form" placeholder="City or Town">
         </form>
         <h1>Results</h1>
         <div class="text">Check out the cultural heritage of your area.</div>
@@ -11,12 +11,13 @@
 
             <div *ngFor="let result of filteredSites" class="result">
 
-                <div class="result-content" (click)="sideElementClick(result.name,[result.lon,result.lat], result)" [style.background-color]="clickedResult === result ? '#f5f5f5' : 'transparent'">
+                <div class="result-content" (click)="sideElementClick(result.name,[result.lon,result.lat], result.city, result)" [style.background-color]="clickedResult === result ? '#f5f5f5' : 'transparent'">
                     <img src="https://www.svgrepo.com/show/38705/location-pin.svg" alt="Location Pin Image" style="width: 30px; height: 40px;">
                     <div class="result-details">
                     <h6>{{result.name}}</h6>
                     <span *ngIf="result.historic != null">{{this.englishToMacedonian[result.historic]}}</span>
                     <span *ngIf="result.tourism != null">{{this.englishToMacedonian[result.tourism]}}</span>
+                        <span {{result.city}}></span>
                     </div>
                 </div>
             </div>
