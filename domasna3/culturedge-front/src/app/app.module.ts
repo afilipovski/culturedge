@@ -14,6 +14,7 @@ import { FaqComponent } from './faq/faq.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { PrivacyandtermsComponent } from './privacyandterms/privacyandterms.component';
 import { FooterComponent } from './footer/footer.component';
+import { LocationService } from './geolocation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [LocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
