@@ -13,8 +13,6 @@ body {
     overflow: hidden;
 }
 
-
-
 .hero-container {
     position: relative;
     display: flex;
@@ -54,7 +52,6 @@ body {
 .second {
     font-size: 0.9em;
     line-height: 1.5;
-
 }
 
 .first{
@@ -90,25 +87,28 @@ body {
     }
 
     .title {
-        font-size: 2em; /* Adjusted font size for smaller screens */
+        font-size: 2em;
         font-weight: bold;
-        padding-top: 1vh; /* Adjusted padding-top for smaller screens */
+        padding-top: 1vh;
     }
 
     .first, .second {
-        font-size: 0.8em; /* Adjusted font size for smaller screens */
+        font-size: 0.8em;
         line-height: 1.5;
-        padding-left: 10px; /* Adjusted padding for smaller screens */
-        padding-right: 10px; /* Adjusted padding for smaller screens */
-        padding-top: 1vh; /* Adjusted padding-top for smaller screens */
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 1vh;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 15px;
     }
 
     .first {
-        padding-top: 2vh; /* Additional padding-top for smaller screens */
+        padding-top: 2vh;
+        margin-bottom: 1vh;
     }
 
     .second {
-        padding-top: 2vh; /* Additional padding-top for smaller screens */
+        padding-top: 2vh;
     }
     body {
         background-position: right center;
