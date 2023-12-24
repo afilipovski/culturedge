@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopupContentComponent } from './popup-content/popup-content.component';
 import { FaqComponent } from './faq/faq.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { PrivacyandtermsComponent } from './privacyandterms/privacyandterms.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     PopupContentComponent,
     FaqComponent,
     FeedbackComponent,
+      PrivacyandtermsComponent
   ],
   imports: [
     BrowserModule,
