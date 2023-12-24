@@ -23,7 +23,7 @@ public class DescriptionServiceImpl implements DescriptionService {
         if (descriptionRepository.findByCulturalHeritage(culturalHeritage) != null) {
             return descriptionRepository.findByCulturalHeritage(culturalHeritage).description;
         } else {
-            return "";
+            return "No description yet.";
         }
     }
 
