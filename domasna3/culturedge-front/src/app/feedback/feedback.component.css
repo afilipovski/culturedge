@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+
 .feedback-container {
     max-width: 31.25em;
     margin: 0 auto;
@@ -8,7 +11,7 @@
     background: #B9DBD5;
     color: #33484E;
     font-size: 1em;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
     margin-bottom: 10%;
 
@@ -18,7 +21,7 @@ h1 {
     text-align: center;
     color: #33484E;
     font-size: 3em;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     letter-spacing: 0.05em;
 

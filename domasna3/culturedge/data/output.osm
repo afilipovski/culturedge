@@ -1293,10 +1293,6 @@
 		<tag k="wikidata" v="Q2458111"/>
 		<tag k="wikipedia" v="mk:Тумба (врв)"/>
 	</node>
-	<node id="5297308190" lat="40.8878546" lon="20.9724068" version="1" timestamp="2017-12-21T10:25:01Z" changeset="0">
-		<tag k="historic" v="monument"/>
-		<tag k="name" v="Monument Kulture"/>
-	</node>
 	<node id="5308964579" lat="41.9765397" lon="22.8213367" version="1" timestamp="2017-12-28T19:24:04Z" changeset="0">
 		<tag k="historic" v="wayside_cross"/>
 	</node>

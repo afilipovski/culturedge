@@ -1,17 +1,11 @@
 package com.example.culturedge.repository;
 
+import com.example.culturedge.models.CulturalHeritage;
+import com.example.culturedge.models.Description;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-
 @Repository
-public class DescriptionRepository {
-    HashMap<String,String> descriptionByName = new HashMap<>();
-
-    public String getByName(String name) {
-        return descriptionByName.get(name);
-    }
-    public void setByName(String name, String desc) {
-        descriptionByName.put(name,desc);
-    }
+public interface DescriptionRepository extends JpaRepository<Description, Long> {
+    Description findByCulturalHeritage(CulturalHeritage culturalHeritage);
 }

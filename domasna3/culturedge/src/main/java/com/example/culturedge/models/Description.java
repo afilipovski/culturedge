@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 
 @Entity
 public class Description {
-    @EmbeddedId
-    public DescriptionId id;
-    @MapsId("chId")
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
+
     @OneToOne
-    @JoinColumn(name = "ch_id")
     public CulturalHeritage culturalHeritage;
 
     @Column(length = 5000)
