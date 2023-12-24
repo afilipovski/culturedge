@@ -1,14 +1,17 @@
 .feedback-container {
-    max-width: 500px;
+    max-width: 31.25em;
     margin: 0 auto;
-    padding: 20px;
-    border: 20px solid #8BB8B0;
-    border-radius: 50px;
+    padding: 1.25em;
+    border: 1.25em solid #8BB8B0;
+    border-radius: 3.125em;
     text-align: left;
     background: #B9DBD5;
     color: #33484E;
-    font-size: x-large;
+    font-size: 1em;
     font-family: 'DM Sans', sans-serif;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+
+    margin-bottom: 10%;
 
 }
 
@@ -19,7 +22,7 @@ h1 {
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
     letter-spacing: 0.05em;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+
 
 }
 
@@ -68,4 +71,8 @@ input[type="submit"] {
 }
 input[type="submit"]:hover {
     background-color: #33484E;
+
+}
+button{
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.1);
 }

@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-size: 16px;
 }
 
 .container {
@@ -8,12 +9,12 @@ body {
     justify-content: space-between;
     align-content: center;
     background-color: #89B7B0;
-    padding: 10px 50px;
+    padding: 0.325em 1.25em;
     font-family: 'DM Sans', sans-serif !important;
 }
 
 .buttons {
-    margin-left: 20px;
+    margin-left: 1.25em;
 }
 
 .logo,
@@ -23,32 +24,117 @@ body {
     align-items: center;
 }
 
+.logo .pic {
+    width: 6em;
+}
+
+.logo .letters {
+    width: 9em;
+}
+
 .buttons > button {
-    margin: 20px;
-    border-radius: 5px;
+    margin: 1.25em;
+    border-radius: 0.3125em;
     border: none;
     color: #5C8980;
-    font-size: large;
-    height: 50px;
-    padding-inline: 15px;
+    font-size: 1.12em;
+    height: 3.112em;
+    padding-inline: 0.9375em;
     cursor: pointer;
 }
 
-.buttons > button:active{
-    background-color: #5C8980;
-    color: #ffffff;
-}
-.buttons > button:focus {
-    background-color: #5C8980;
-    color: #ffffff;
-}
-
+.buttons > button:active,
+.buttons > button:focus,
 .buttons > button:hover {
-    color: #89B7B0;
     background-color: #5C8980;
+    color: #ffffff;
 }
 
 button {
     font-family: inherit;
-    outline: none; /* Remove default focus outline */
+    outline: none;
+}
+
+.language-selector {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.triangle {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+}
+
+.language-selector:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.buttons > .language-selector > button {
+    margin: 1.25em;
+    border-radius: 0.3125em;
+    border: none;
+    color: #5C8980;
+    font-size: 1.12em;
+    height: 3.112em;
+    padding-inline: 0.9375em;
+    cursor: pointer;
+}
+
+.buttons > .language-selector > button:hover {
+    color: #89B7B0;
+    background-color: #5C8980;
+}
+
+/* Media Query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0.325em 0.625em;
+    }
+
+    .buttons {
+        margin-left: 0;
+        margin-top: 1em;
+    }
+
+    .buttons > button {
+        margin: 0.75em;
+    }
+
+    .language-selector {
+        margin-top: 0.75em;
+    }
+
+    .buttons > .language-selector > button {
+        margin: 0.75em;
+    }
 }
