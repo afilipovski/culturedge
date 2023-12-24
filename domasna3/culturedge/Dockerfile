@@ -18,4 +18,4 @@ COPY --from=build /app .
 
 CMD java -jar ./target/culturedge
 
-EXPOSE 8080
+EXPOSE 9090

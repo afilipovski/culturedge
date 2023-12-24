@@ -1,18 +1,18 @@
 version: "3.9"
 services:
     backend:
-        image: backend
+        image: afilipovski/culturedge
         container_name: backend
         build:
             context: ./culturedge
         ports:
-            - "8080:8080"
-    frontend:
-        image: culturedge-front
+            - "9090:9090"
+    culturedge-front:
+        image: afilipovski/culturedge-front
         container_name: culturedge-front
         build:
             context: ./culturedge-front
         ports:
-            - "80:4200"
+            - "80:80"
         depends_on:
             - backend
