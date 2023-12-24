@@ -14,9 +14,9 @@
                     <img src="https://www.svgrepo.com/show/38705/location-pin.svg" alt="Location Pin Image" style="width: 30px; height: 40px;">
                     <div class="result-details">
                         <h6>{{result.name}}</h6>
+                        <h6 class="city">{{result.city}}</h6>
                         <span *ngIf="result.historic != null">{{this.englishToMacedonian[result.historic]}}</span>
                         <span *ngIf="result.tourism != null">{{this.englishToMacedonian[result.tourism]}}</span>
-                        <div class="cityname">{{result.city}}</div>
                     </div>
                 </div>
             </div>

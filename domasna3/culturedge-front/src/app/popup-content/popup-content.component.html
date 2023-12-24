@@ -1,20 +1,23 @@
 <div class="container">
     <div class="arrow"></div>
+    <br>
     <span class="name">{{placeName}}</span>
-    <span>{{cityName}}</span>
     <img [src]="pictureUrl" alt="">
 
     <!-- DESC + COORDS -->
     
+
+    <span class="city">{{cityName}}</span>
+    <br>
     <div *ngIf="!editMode">
-        <div class="description">{{description}}</div>
+        <div class="description"><b>Description: </b> <span style="color: #8BB8B0;">{{description}}</span></div>
     </div>
     <form *ngIf="editMode" (ngSubmit)="onSubmit()">
         <textarea class="desc-input" type="text" name="desc" id="" [(ngModel)]="description"></textarea>
     </form>
-
-    <strong>Coordinates: {{lat}}°N {{lon}}°E</strong>
-
+    <br>
+    <span style="color: #8BB8B0;"><b style="color: #5C8980">Coordinates: </b>{{lat}}°N {{lon}}°E</span>
+    <br>    <br>
     <!-- CONTROLS -->
     <div *ngIf="!editMode">
         <button (click)="editMode = true">Edit</button>

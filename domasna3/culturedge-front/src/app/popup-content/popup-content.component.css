@@ -48,6 +48,7 @@ input {
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+    color: #5C8980;
 }
 button, .save-button {
     border-radius: 5px;
@@ -75,4 +76,14 @@ button, .save-button {
 textarea {
     font-family: 'Poppins', sans-serif;
     font-size: large;
+}
+.city {
+    font-size: large;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    color: #5C8980;
+    font-weight: bold;
+    border-bottom: 1px solid #8BB8B0;
+    letter-spacing: 0.05em;
+    padding-bottom: 10px;
 }
