@@ -30,3 +30,18 @@ body {
     padding-top: 5%;
     margin-bottom: 7%;
 }
+
+@media only screen and (max-width: 768px) {
+    body{
+        margin: 20px;
+    }
+    .faq-container {
+        margin: 20px;
+        padding: 10px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}

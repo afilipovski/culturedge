@@ -18,7 +18,7 @@ a{
     color: #405F59;
 }
 span {
-    font-size: 24px;
+    font-size: 19px;
 }
 .contact-column,
 .help-column{
@@ -31,6 +31,7 @@ span {
 .contact-column h1,
 .help-column h1{
     margin-top: 0;
+
 
 }
 @media only screen and (max-width: 768px) {
@@ -56,4 +57,3 @@ span {
         padding-bottom: 7vh;
     }
 }
-
