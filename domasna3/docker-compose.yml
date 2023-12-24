@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+    backend:
+        image: backend
+        container_name: backend
+        build:
+            context: ./culturedge
+        ports:
+            - "8080:8080"
+    frontend:
+        image: culturedge-front
+        container_name: culturedge-front
+        build:
+            context: ./culturedge-front
+        ports:
+            - "80:4200"
+        depends_on:
+            - backend
