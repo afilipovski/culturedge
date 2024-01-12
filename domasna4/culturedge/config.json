@@ -1,0 +1,4 @@
+{
+  "converterCommand": "bin/osmconvert data/macedonia-latest.osm.pbf --drop-relations -o=data/intermediary.osm",
+  "filterCommand": "bin/osmfilter data/intermediary.osm --keep=\"tourism=museum or historic\" --ignore-dependencies -o=data/output.osm"
+}

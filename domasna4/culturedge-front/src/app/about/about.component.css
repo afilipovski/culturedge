@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://architexturez.net/data/styles/large/public/media/brutalism-monument-ilinden-makedonium-krushevo-macedonia.jpg?itok=a1Uc-uYB');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.hero-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 65vh;
+    color: #011b1c;
+
+    padding-top: 2vh;
+}
+
+.hero-text {
+    max-width: 40%;
+    text-align: left;
+}
+
+.subtitle, .title, .first, .second {
+    font-family: 'Poppins', sans-serif;
+}
+
+.subtitle {
+    font-size: 0.8em;
+    margin: 0;
+    font-weight: bold;
+    padding-top: 10vh;
+    padding-left: 2vw;
+}
+
+.title {
+    font-size: 2.5em;
+    font-weight: bold;
+    padding-top: 1vh;
+    padding-left: 2vw;
+}
+
+.first,
+.second {
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.first{
+    padding-left: 11vw;
+    padding-top: 2vh;
+    padding-right: 2vh;
+}
+.second{
+     padding-left: 14vw;
+     padding-top: 2vh;
+    padding-right: 2vh;
+ }
+
+
+@media screen and (max-width: 768px) {
+
+    .hero-container {
+        height: 70%;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .subtitle {
+        font-size: 1.1em;
+        margin: 0;
+        font-weight: bold;
+        padding-top: 5vh;
+    }
+
+    .title {
+        font-size: 2em;
+        font-weight: bold;
+        padding-top: 1vh;
+    }
+
+    .first, .second {
+        font-size: 0.8em;
+        line-height: 1.5;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 1vh;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 15px;
+    }
+
+    .first {
+        padding-top: 2vh;
+        margin-bottom: 1vh;
+    }
+
+    .second {
+        padding-top: 2vh;
+    }
+    body {
+        background-position: right center;
+
+    }
+
+}
+
