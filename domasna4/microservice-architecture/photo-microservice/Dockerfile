@@ -15,6 +15,6 @@ WORKDIR /app
 
 COPY --from=build /app .
 
-CMD ["java", "-jar", "./target/culturedge-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "./target/photo-microservice-0.0.1-SNAPSHOT.jar"]
 
-EXPOSE 9090
+EXPOSE 2222
