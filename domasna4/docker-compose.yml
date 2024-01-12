@@ -1,14 +1,39 @@
 version: "3.9"
 services:
     backend:
-        image: afilipovski/culturedge
+        image: afilipovski/api
         container_name: backend
         build:
-            context: ./culturedge
+            context: ./microservice-architecture/api-gateway
         ports:
             - "9090:9090"
+        depends_on:
+            - feedback
+            - photo
+            - heritage
+    feedback:
+        image: afilipovski/feedback
+        container_name: feedback
+        build:
+            context: ./microservice-architecture/feedback-microservice
+        ports:
+            - "1111:1111"
+    photo:
+        image: afilipovski/photo
+        container_name: photo
+        build:
+            context: ./microservice-architecture/photo-microservice
+        ports:
+            - "2222:2222"
+    heritage:
+        image: afilipovski/heritage
+        container_name: heritage
+        build:
+            context: ./microservice-architecture/heritage-microservice
+        ports:
+            - "3333:3333"
     culturedge-front:
-        image: afilipovski/culturedge-front
+        image: afilipovski/culturedge-front-d4
         container_name: culturedge-front
         build:
             context: ./culturedge-front
