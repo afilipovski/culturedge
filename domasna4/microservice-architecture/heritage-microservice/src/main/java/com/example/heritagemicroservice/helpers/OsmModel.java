@@ -7,6 +7,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import java.util.List;
 
+// Root element for the XML representation of OpenStreetMap data.
 @JacksonXmlRootElement(localName = "osm")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OsmModel {

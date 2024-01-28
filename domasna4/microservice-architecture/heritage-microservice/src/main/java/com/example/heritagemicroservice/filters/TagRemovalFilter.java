@@ -6,6 +6,7 @@ import com.example.heritagemicroservice.models.CulturalHeritage;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Filter implementation to remove tags and convert nodes to cultural heritage objects.
 public class TagRemovalFilter implements Filter<List<Node>, List<CulturalHeritage>> {
 
     @Override

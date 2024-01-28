@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashMap;
 
+// Represents the location information retrieved from OpenStreetMap for cultural heritage sites.
 public class OsmCultureHeritageLocation {
     @JsonProperty("display_name")
     private String displayName;
