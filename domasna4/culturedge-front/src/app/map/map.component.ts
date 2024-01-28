@@ -1,8 +1,4 @@
-import {AfterViewInit, Component, ComponentFactoryResolver, ViewChild, ViewContainerRef} from '@angular/core';
-import {ComponentPortal} from '@angular/cdk/portal';
-import {DomPortalOutlet} from '@angular/cdk/portal';
-
-// import 'ol/ol.css'; // Import OpenLayers CSS
+import {AfterViewInit, Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -29,7 +25,7 @@ interface TranslationDictionary {
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css']
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements AfterViewInit, OnInit {
     userLocation: { latitude: number; longitude: number } | null = null;
 
     constructor(
@@ -37,8 +33,7 @@ export class MapComponent implements AfterViewInit {
         private componentFactoryResolver: ComponentFactoryResolver,
         private locationService: LocationService,
         private distanceService: DistanceService
-    ) {
-    }
+    ) {}
 
     sites: IHeritageSite[] = []
     filteredSites: IHeritageSite[] = []
@@ -74,8 +69,8 @@ export class MapComponent implements AfterViewInit {
 
             })
 
-
         this.vectorSource.clear();
+
         this.filteredSites.forEach(site => {
             const marker = new Feature({
                 geometry: new Point(fromLonLat([site.lon, site.lat])),
@@ -123,6 +118,7 @@ export class MapComponent implements AfterViewInit {
                 }
                 this.change()
             })
+
         this.map = new Map({
             target: 'mapdiv',
             layers: [
@@ -135,7 +131,9 @@ export class MapComponent implements AfterViewInit {
                 zoom: 8,
             }),
         });
+
         this.vectorSource = new VectorSource();
+
         const vectorLayer = new VectorLayer({
             source: this.vectorSource,
         });
@@ -154,6 +152,7 @@ export class MapComponent implements AfterViewInit {
                     a.lat,
                     a.lon
                 );
+
                 const distanceB = this.distanceService.calculateDistance(
                     this.userLocation.latitude,
                     this.userLocation.longitude,
@@ -165,18 +164,14 @@ export class MapComponent implements AfterViewInit {
             }
             return 0;
         });
+
         this.change();
     }
 
-
     @ViewChild('container', {read: ViewContainerRef})
-    container!
-        :
-        ViewContainerRef;
+    container!: ViewContainerRef;
 
-    ngAfterViewInit()
-        :
-        void {
+    ngAfterViewInit(): void {
         this.map.on('click', (evt) => {
             let featureName = ""
             let featureCity: string = ""
@@ -198,31 +193,19 @@ export class MapComponent implements AfterViewInit {
 
     clickedResult: any | null = null;
 
-    sideElementClick(name
-                         :
-                         string, lonlat
-                         :
-                         number[], city
-                         :
-                         string, result
-                         :
-                         any
-    ) {
+    sideElementClick(name: string,
+                     lonlat: number[],
+                     city: string,
+                     result: any) {
         this.popupAtCoords(name, fromLonLat(lonlat), city)
         this.clickedResult = result;
     }
 
-    popupAtCoords(placeName
-                      :
-                      string, coords
-                      :
-                      Coordinate, cityName
-                      :
-                      string
-    ) {
+    popupAtCoords(placeName: string,
+                  coords: Coordinate,
+                  cityName: string) {
         const factory = this.componentFactoryResolver.resolveComponentFactory(PopupContentComponent);
         const ref = this.container.createComponent(factory);
-
 
         const instance = ref.instance;
         instance.placeName = placeName;
@@ -230,10 +213,8 @@ export class MapComponent implements AfterViewInit {
 
         this.popup.show(coords!, ref.location.nativeElement);
 
-
         coords = toLonLat(coords);
         instance.lat = Math.round(coords[1] * 10000) / 10000;
         instance.lon = Math.round(coords[0] * 10000) / 10000;
-
     }
 }
