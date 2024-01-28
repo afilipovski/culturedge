@@ -14,7 +14,6 @@ public class FeedbackServiceImpl implements FeedbackService {
     public FeedbackServiceImpl(EmailService emailService) {
         this.emailService = emailService;
     }
-
     // Sends feedback email with provided name, email, and message.
     @Override
     public void sendFeedback(String name, String email, String message) {
