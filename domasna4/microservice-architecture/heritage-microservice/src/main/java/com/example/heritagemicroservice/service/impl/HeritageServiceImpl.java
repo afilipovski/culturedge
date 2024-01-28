@@ -22,15 +22,18 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 
+// Implementation of HeritageService interface for managing cultural heritage sites.
 @Service
 public class HeritageServiceImpl implements HeritageService {
     HeritageRepository heritageRepository;
     LocationService locationService;
 
+    // Constructor with dependency injection.
     public HeritageServiceImpl(HeritageRepository heritageRepository, LocationService locationService) throws IOException, InterruptedException {
         this.heritageRepository = heritageRepository;
         this.locationService = locationService;
 
+        // If no cultural heritage data exists in the repository, load data from external source.
         if (heritageRepository.findAll().size() == 0) {
             File outputFile = new File("data/output.osm");
             if (!outputFile.exists()) {
@@ -39,8 +42,12 @@ public class HeritageServiceImpl implements HeritageService {
                 try (InputStream fileStream = new FileInputStream("config.json")) {
                     dConfig = objectMapper.readValue(fileStream, DConfig.class);
                 }
+                // Execute converter and filter commands.
+                // First, create a process builder for the converter command specified in the configuration.
                 ProcessBuilder converter = new ProcessBuilder(dConfig.converterCommand.split(" "));
                 Process c = converter.start();
+
+                // Next, create a process builder for the filter command specified in the configuration.
                 ProcessBuilder filter = new ProcessBuilder(dConfig.filterCommand.split(" "));
                 c.waitFor();
                 Process f = filter.start();
@@ -54,6 +61,7 @@ public class HeritageServiceImpl implements HeritageService {
             }
 
             List<Node> nodes = osmModel.getNodes();
+            // Create a processing pipeline for filtering nodes.
             Pipe<List<Node>, List<CulturalHeritage>> pipe =
                     new Pipe<>(new TagRemovalFilter())
                             .chain(new NullNamesRemovalFilter())
@@ -61,6 +69,7 @@ public class HeritageServiceImpl implements HeritageService {
 
             List<CulturalHeritage> chList = pipe.process(nodes);
 
+            // Obtain and set location information for each cultural heritage site.
             chList.forEach( culturalHeritage -> {
                 HashMap<String, String> locationInfo = this.locationService.getLocationInfo(culturalHeritage.lat, culturalHeritage.lon);
                 culturalHeritage.setAddress(locationInfo.get("address"));
@@ -71,6 +80,7 @@ public class HeritageServiceImpl implements HeritageService {
         }
     }
 
+    // Method to retrieve all cultural heritage sites.
     @Override
     public List<CulturalHeritage> getAll() {
         return heritageRepository.findAll();

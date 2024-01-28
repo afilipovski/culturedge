@@ -3,6 +3,7 @@ package com.example.heritagemicroservice.pipe;
 
 import com.example.heritagemicroservice.filters.Filter;
 
+// Class representing a pipeline of filters to process data.
 public class Pipe<I, O> {
 
     private final Filter<I, O> current;

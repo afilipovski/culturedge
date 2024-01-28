@@ -2,6 +2,7 @@ package com.example.heritagemicroservice.models;
 
 import jakarta.persistence.*;
 
+// Entity class representing the description of a cultural heritage site.
 @Entity
 public class Description {
 

@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+// This class handles HTTP requests related to cultural heritage sites.
 public class HeritageController {
     final HeritageService heritageService;
 
@@ -17,6 +18,7 @@ public class HeritageController {
         this.heritageService = heritageService;
     }
 
+    // Retrieves all cultural heritage sites.
     @GetMapping("/sites")
     public List<CulturalHeritage> getUsers() {
         return heritageService.getAll();

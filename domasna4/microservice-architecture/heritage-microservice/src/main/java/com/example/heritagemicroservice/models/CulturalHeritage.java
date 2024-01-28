@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Table(name = "cultural_heritage")
+// Entity class representing a cultural heritage site.
 public class CulturalHeritage {
 
     @Id

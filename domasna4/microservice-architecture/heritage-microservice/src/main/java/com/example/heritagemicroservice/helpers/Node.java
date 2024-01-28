@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Represents a node in OpenStreetMap data.
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Node {
     @JacksonXmlProperty(isAttribute = true)
@@ -23,6 +24,7 @@ public class Node {
     @JacksonXmlProperty(localName = "tag")
     public List<Tag> tags;
 
+    // Method to retrieve property value based on key.
     public String getProperty(String key) {
         if (tags==null)
             return null;
