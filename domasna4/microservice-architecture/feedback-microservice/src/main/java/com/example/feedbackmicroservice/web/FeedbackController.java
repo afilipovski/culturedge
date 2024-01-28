@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+// Controller class for handling feedback-related HTTP requests.
 public class FeedbackController {
     final FeedbackService feedbackService;
 
