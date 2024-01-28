@@ -14,7 +14,7 @@ import { FaqComponent } from './faq/faq.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { PrivacyandtermsComponent } from './privacyandterms/privacyandterms.component';
 import { FooterComponent } from './footer/footer.component';
-import { LocationService } from './geolocation.component';
+import { LocationService } from './services/geolocation.component';
 
 @NgModule({
   declarations: [

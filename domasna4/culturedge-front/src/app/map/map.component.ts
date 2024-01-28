@@ -13,8 +13,12 @@ import VectorLayer from 'ol/layer/Vector';
 import Popup from 'ol-popup';
 import {Coordinate} from 'ol/coordinate';
 import {PopupContentComponent} from '../popup-content/popup-content.component';
-import {LocationService} from '../geolocation.component';
-import {DistanceService} from '../distance.component';
+import {LocationService} from '../services/geolocation.component';
+import {DistanceService} from '../services/distance.component';
+import {FilterContext} from '../services/search.component';
+import {NameFilter} from '../services/search.component';
+import {CityFilter} from '../services/search.component';
+import {TypeFilter} from '../services/search.component';
 
 interface TranslationDictionary {
     [key: string]: string;
@@ -32,7 +36,8 @@ export class MapComponent implements AfterViewInit, OnInit {
         private heritageService: ApiService,
         private componentFactoryResolver: ComponentFactoryResolver,
         private locationService: LocationService,
-        private distanceService: DistanceService
+        private distanceService: DistanceService,
+        private searchFilterContext: FilterContext
     ) {}
 
     sites: IHeritageSite[] = []
@@ -58,16 +63,12 @@ export class MapComponent implements AfterViewInit, OnInit {
     popup = new Popup()
 
     change() {
-        this.filteredSites = this.sites
-            .filter(a => a.name.toLowerCase().includes(this.queryName.toLowerCase()))
-            .filter(a => !a.city || a.city.toLowerCase().includes(this.queryCity.toLowerCase()))
-            .filter(a => {
-                let tokens = []
-                if (a.historic != null) tokens.push(this.englishToMacedonian[a.historic])
-                if (a.tourism != null) tokens.push(this.englishToMacedonian[a.tourism])
-                return tokens.findIndex(a => a.toLowerCase().includes(this.queryType.toLowerCase())) != -1
-
-            })
+        this.searchFilterContext.setFilterStrategy(new NameFilter());
+        const result1 = this.searchFilterContext.applyFilter(this.sites, this.queryName);
+        this.searchFilterContext.setFilterStrategy(new CityFilter());
+        const result2 = this.searchFilterContext.applyFilter(result1, this.queryCity);
+        this.searchFilterContext.setFilterStrategy(new TypeFilter());
+        this.filteredSites = this.searchFilterContext.applyFilter(result2, this.queryType);
 
         this.vectorSource.clear();
 
@@ -109,6 +110,7 @@ export class MapComponent implements AfterViewInit, OnInit {
             }
         );
 
+        // Observer pattern for fetching heritage sites for performing additional actions when the data is received
         this.heritageService.getHeritageSites().subscribe(
             a => {
                 this.sites = a

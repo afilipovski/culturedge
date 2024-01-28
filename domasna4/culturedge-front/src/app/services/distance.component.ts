@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
+/**
+ * Strategy design pattern for finding distance from the user to the cultural heritage sites.
+ */
 
-// Strategy Interface
+/**
+ * Strategy Interface
+ */
 export interface DistanceCalculator {
     calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number;
 }
@@ -9,7 +14,10 @@ export interface DistanceCalculator {
     providedIn: 'root',
 })
 
-// Haversine Distance Calculation Strategy
+
+/**
+ * Haversine Distance Calculation Strategy
+ */
 export class HaversineDistanceService implements DistanceCalculator {
     calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
         const R = 6371;

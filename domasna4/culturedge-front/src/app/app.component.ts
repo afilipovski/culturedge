@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { LocationService } from "./geolocation.component";
+import { Router } from '@angular/router';
+import { LocationService } from "./services/geolocation.component";
 
 @Component({
   selector: 'app-root',
