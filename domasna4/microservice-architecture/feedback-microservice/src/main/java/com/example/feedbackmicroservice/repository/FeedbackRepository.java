@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+// Repository class for managing feedback data.
 public class FeedbackRepository {
     List<String> inMemoryData = new ArrayList<>();
 

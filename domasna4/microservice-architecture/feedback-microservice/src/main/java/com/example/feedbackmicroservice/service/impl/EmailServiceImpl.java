@@ -14,6 +14,7 @@ public class EmailServiceImpl implements EmailService {
         this.javaMailSender = javaMailSender;
     }
 
+    // Sends an email with the provided email address and message content.
     public void sendEmail(String email, String message) {
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
