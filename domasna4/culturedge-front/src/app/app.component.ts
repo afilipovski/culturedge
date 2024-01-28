@@ -15,11 +15,12 @@ export class AppComponent {
   ngOnInit(): void {
     this.getLocation();
   }
-
+  // Method to determine whether to show the navbar based on the current URL
   shouldShowNavbar(): boolean {
     return this.router.url !== '/map';
   }
 
+  // Method to get the current location of the user
   getLocation(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {

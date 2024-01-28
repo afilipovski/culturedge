@@ -1,3 +1,4 @@
+// Interface representing a heritage site.
 export interface IHeritageSite {
     name: string;
     lat: number;

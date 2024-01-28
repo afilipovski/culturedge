@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
-
+  // This class represents the AboutComponent, which is responsible for displaying information about the application.
 }

@@ -25,8 +25,8 @@ import { LocationService } from './services/geolocation.component';
     PopupContentComponent,
     FaqComponent,
     FeedbackComponent,
-      PrivacyandtermsComponent,
-      FooterComponent
+    PrivacyandtermsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@ import {FaqComponent} from "./faq/faq.component";
 import {FeedbackComponent} from "./feedback/feedback.component";
 import {PrivacyandtermsComponent} from "./privacyandterms/privacyandterms.component";
 
-const routes: Routes = [
+const routes: Routes = [ // Define routes array
   { path: '', redirectTo: '/map', pathMatch: 'full' },
   { path: 'map', component: MapComponent},
   { path: 'faq', component: FaqComponent },

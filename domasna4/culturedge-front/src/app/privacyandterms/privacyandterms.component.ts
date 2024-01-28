@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./privacyandterms.component.css']
 })
 export class PrivacyandtermsComponent {
-
+  //This code defines an Angular component named PrivacyandtermsComponent, it is responsible for rendering the privacy and terms section of the application.
 }

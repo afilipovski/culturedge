@@ -7,5 +7,5 @@ import { Component} from '@angular/core';
 })
 
 export class NavbarComponent {
-
+  // This class represents the NavabarComponent, which is responsible for displaying the navbar of application.
 }
