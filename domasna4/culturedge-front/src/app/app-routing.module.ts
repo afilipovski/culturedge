@@ -7,6 +7,7 @@ import {FeedbackComponent} from "./feedback/feedback.component";
 import {PrivacyandtermsComponent} from "./privacyandterms/privacyandterms.component";
 
 const routes: Routes = [
+  { path: '', redirectTo: '/map', pathMatch: 'full' },
   { path: 'map', component: MapComponent},
   { path: 'faq', component: FaqComponent },
   { path: 'feedback', component: FeedbackComponent },
