@@ -4,9 +4,10 @@ import com.example.feedbackmicroservice.service.FeedbackService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-// Controller class for handling feedback-related HTTP requests.
+
 @RestController
 @RequestMapping("/api")
+// Controller class for handling feedback-related HTTP requests.
 public class FeedbackController {
     final FeedbackService feedbackService;
 

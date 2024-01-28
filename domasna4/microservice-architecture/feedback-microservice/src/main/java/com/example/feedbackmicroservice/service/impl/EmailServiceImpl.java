@@ -13,6 +13,7 @@ public class EmailServiceImpl implements EmailService {
     public EmailServiceImpl(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
+
     // Sends an email with the provided email address and message content.
     public void sendEmail(String email, String message) {
 
