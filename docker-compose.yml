@@ -1,5 +1,12 @@
 version: "3.9"
 services:
+    db:
+        image: 'postgres:13.1-alpine'
+        container_name: db
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=1234567
+            - POSTGRES_DB=culturedge
     backend:
         image: afilipovski/api
         container_name: backend
@@ -18,6 +25,13 @@ services:
             context: ./microservice-architecture/feedback-microservice
         ports:
             - "1111:1111"
+        depends_on:
+            - db
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/culturedge
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=1234567
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     photo:
         image: afilipovski/photo
         container_name: photo
@@ -32,6 +46,13 @@ services:
             context: ./microservice-architecture/heritage-microservice
         ports:
             - "3333:3333"
+        depends_on:
+            - db
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/culturedge
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=1234567
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     culturedge-front:
         image: afilipovski/culturedge-front-d4
         container_name: culturedge-front

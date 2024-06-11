@@ -9,7 +9,7 @@ COPY config.json .
 
 COPY pom.xml .
 
-RUN mvn package
+RUN mvn clean package -DskipTests
 
 FROM amazoncorretto:21-alpine3.16-jdk
 
