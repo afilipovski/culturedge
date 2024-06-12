@@ -3,6 +3,8 @@ services:
     db:
         image: 'postgres:13.1-alpine'
         container_name: db
+        volumes:
+            - ./.volumes/postgres:/var/lib/postgresql/data
         environment:
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=1234567
@@ -37,6 +39,8 @@ services:
         container_name: photo
         build:
             context: ./microservice-architecture/photo-microservice
+        volumes:
+            - ./.volumes/images:/app/images
         ports:
             - "2222:2222"
     heritage:
