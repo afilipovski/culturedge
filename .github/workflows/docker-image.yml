@@ -18,7 +18,7 @@ jobs:
       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
     
     - name: Build frontend
-      run: docker build ./culturedge-front/Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/culturedge-front-d4:$(date +%s)
+      run: docker build ./culturedge-front --tag ${{ secrets.DOCKERHUB_USERNAME }}/culturedge-front-d4:$(date +%s)
 
     - name: Push frontend
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/culturedge-front-d4:latest
