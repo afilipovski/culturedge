@@ -18,31 +18,31 @@ jobs:
       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
     
     - name: Build frontend
-      run: docker build ./culturedge-front --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/culturedge-front-d4:$(date +%s)
+      run: docker build /culturedge-front --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/culturedge-front-d4:$(date +%s)
 
     - name: Push frontend
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/culturedge-front-d4:latest
 
     - name: Build API gateway
-      run: docker build ./microservice-architecture/api-gateway --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/api:$(date +%s)
+      run: docker build /microservice-architecture/api-gateway --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/api:$(date +%s)
 
     - name: Push API gateway
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/api:latest
 
     - name: Build Heritage microservice
-      run: docker build ./microservice-architecture/heritage-microservice --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/heritage:$(date +%s)
+      run: docker build /microservice-architecture/heritage-microservice --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/heritage:$(date +%s)
 
     - name: Push Heritage microservice
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/heritage:latest
 
     - name: Build Photo microservice
-      run: docker build ./microservice-architecture/photo-microservice --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/photo:$(date +%s)
+      run: docker build /microservice-architecture/photo-microservice --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/photo:$(date +%s)
 
     - name: Push Photo microservice
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/photo:latest
       
     - name: Build Feedback microservice
-      run: docker build ./microservice-architecture/feedback-microservice --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/feedback:$(date +%s)
+      run: docker build /microservice-architecture/feedback-microservice --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/feedback:$(date +%s)
 
     - name: Push Feedback microservice
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/feedback:latest
