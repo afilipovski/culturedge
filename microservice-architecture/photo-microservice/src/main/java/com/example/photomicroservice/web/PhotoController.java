@@ -18,6 +18,7 @@ public class PhotoController {
 
     // Directory where images are uploaded and retrieved from.
     public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/images";
+    public static String STATIC_DIRECTORY = System.getProperty("user.dir") + "/static";
 
     // Retrieves a photo based on the provided name.
     @GetMapping(value = "/photo", produces = MediaType.IMAGE_JPEG_VALUE)
@@ -25,7 +26,7 @@ public class PhotoController {
 
         UUID uuid = UUID.nameUUIDFromBytes(name.getBytes());
         File f = new File(UPLOAD_DIRECTORY + "/" + uuid + ".jpg");
-        File noneFound = new File(UPLOAD_DIRECTORY + "/none-found.jpg");
+        File noneFound = new File(STATIC_DIRECTORY + "/none-found.jpg");
 
         // If the requested image doesn't exist, return a default image.
         if (!f.exists())
