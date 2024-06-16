@@ -1,0 +1,41 @@
+name: photo-microservice CI
+
+on:
+  push:
+    paths:
+      - 'microservice-architecture/photo-microservice/**'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        docker_arch: [ amd64, arm64 ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Set up QEMU for ARM emulation
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and Push Docker Image
+        id: docker_build
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+        run: |
+          for arch in ${{ matrix.docker_arch }};
+          do
+            docker buildx build \
+              --platform $arch \
+              -t "${{ secrets.DOCKERHUB_USERNAME }}/photo-microservice:latest-$arch" \
+              ./microservice-architecture/photo-microservice \
+              --push;
+          done

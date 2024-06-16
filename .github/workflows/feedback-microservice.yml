@@ -1,28 +1,16 @@
-name: Docker Image CI
+name: feedback-microservice CI
 
 on:
   push:
-    branches: [ "main" ]
+    paths:
+      - 'microservice-architecture/feedback-microservice/**'
 
 jobs:
-
   build-and-push:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        docker_image:
-          - name: culturedge-front
-            path: ./culturedge-front
-          - name: api-gateway
-            path: ./microservice-architecture/api-gateway
-          - name: heritage-microservice
-            path: ./microservice-architecture/heritage-microservice
-          - name: photo-microservice
-            path: ./microservice-architecture/photo-microservice
-          - name: feedback-microservice
-            path: ./microservice-architecture/feedback-microservice
-
         docker_arch: [ amd64, arm64 ]
 
     steps:
@@ -47,7 +35,7 @@ jobs:
           do
             docker buildx build \
               --platform $arch \
-              -t "${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.docker_image.name }}:latest-$arch" \
-              "${{ matrix.docker_image.path }}" \
+              -t "${{ secrets.DOCKERHUB_USERNAME }}/feedback-microservice:latest-$arch" \
+              ./microservice-architecture/feedback-microservice \
               --push;
           done
