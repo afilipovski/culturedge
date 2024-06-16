@@ -6,43 +6,31 @@ on:
 
 jobs:
 
-  build:
-
+  build-and-push:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        docker_image:
+          - name: culturedge-front
+            path: ./culturedge-front
+          - name: api-gateway
+            path: ./microservice-architecture/api-gateway
+          - name: heritage-microservice
+            path: ./microservice-architecture/heritage-microservice
+          - name: photo-microservice
+            path: ./microservice-architecture/photo-microservice
+          - name: feedback-microservice
+            path: ./microservice-architecture/feedback-microservice
+
     steps:
-    - uses: actions/checkout@v4
-      name: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Log in to Docker Hub
-      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-    
-    - name: Build frontend
-      run: docker build ./culturedge-front --tag ${{ secrets.DOCKERHUB_USERNAME }}/culturedge-front-d4:latest
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-    - name: Push frontend
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/culturedge-front-d4:latest
-
-    - name: Build API gateway
-      run: docker build ./microservice-architecture/api-gateway --tag ${{ secrets.DOCKERHUB_USERNAME }}/api:latest
-
-    - name: Push API gateway
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/api:latest
-
-    - name: Build Heritage microservice
-      run: docker build ./microservice-architecture/heritage-microservice --tag ${{ secrets.DOCKERHUB_USERNAME }}/heritage:latest
-
-    - name: Push Heritage microservice
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/heritage:latest
-
-    - name: Build Photo microservice
-      run: docker build ./microservice-architecture/photo-microservice --tag ${{ secrets.DOCKERHUB_USERNAME }}/photo:latest
-
-    - name: Push Photo microservice
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/photo:latest
-      
-    - name: Build Feedback microservice
-      run: docker build ./microservice-architecture/feedback-microservice --tag ${{ secrets.DOCKERHUB_USERNAME }}/feedback:latest
-
-    - name: Push Feedback microservice
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/feedback:latest
+      - name: Build and Push Docker Image
+        run: |
+          docker build "${{ matrix.docker_image.path }}" --tag "${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.docker_image.name }}:latest"
+          docker push "${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.docker_image.name }}:latest"
