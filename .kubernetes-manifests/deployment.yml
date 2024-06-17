@@ -63,17 +63,6 @@ spec:
             path: /path/to/your/host/directory/.volumes/postgres
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: db
-spec:
-  ports:
-    - port: 5432
-  selector:
-    app: db
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -90,20 +79,9 @@ spec:
     spec:
       containers:
         - name: backend
-          image: afilipovski/api
+          image: afilipovski/api-gateway:latest-amd64
           ports:
             - containerPort: 9090
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend
-spec:
-  ports:
-    - port: 9090
-  selector:
-    app: backend
 
 ---
 apiVersion: apps/v1
@@ -122,7 +100,7 @@ spec:
     spec:
       containers:
         - name: feedback
-          image: afilipovski/feedback
+          image: afilipovski/feedback-microservice:latest-amd64
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://db:5432/culturedge
@@ -142,17 +120,6 @@ spec:
             - containerPort: 1111
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: feedback
-spec:
-  ports:
-    - port: 1111
-  selector:
-    app: feedback
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -169,7 +136,7 @@ spec:
     spec:
       containers:
         - name: photo
-          image: afilipovski/photo
+          image: afilipovski/photo-microservice:latest-amd64
           ports:
             - containerPort: 2222
           volumeMounts:
@@ -179,17 +146,6 @@ spec:
         - name: image-storage
           hostPath:
             path: /path/to/your/host/directory/.volumes/images
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: photo
-spec:
-  ports:
-    - port: 2222
-  selector:
-    app: photo
 
 ---
 apiVersion: apps/v1
@@ -208,7 +164,7 @@ spec:
     spec:
       containers:
         - name: heritage
-          image: afilipovski/heritage
+          image: afilipovski/heritage-microservice:latest-amd64
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://db:5432/culturedge
@@ -228,17 +184,6 @@ spec:
             - containerPort: 3333
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: heritage
-spec:
-  ports:
-    - port: 3333
-  selector:
-    app: heritage
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -255,20 +200,6 @@ spec:
     spec:
       containers:
         - name: culturedge-front
-          image: afilipovski/culturedge-front-d4
+          image: afilipovski/culturedge-front:latest-amd64
           ports:
             - containerPort: 80
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: culturedge-front
-spec:
-  type: NodePort
-  ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 30080  # NodePort must be in the range 30000-32767
-  selector:
-    app: culturedge-front
