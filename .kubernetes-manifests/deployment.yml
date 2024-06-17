@@ -19,53 +19,6 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: db
-  template:
-    metadata:
-      labels:
-        app: db
-    spec:
-      containers:
-        - name: db
-          image: postgres:13.1-alpine
-          env:
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_USER
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_PASSWORD
-            - name: POSTGRES_DB
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-config
-                  key: POSTGRES_DB
-          volumeMounts:
-            - name: postgres-data
-              mountPath: /var/lib/postgresql/data
-          livenessProbe:
-            exec:
-              command: ["pg_isready", "-U", "postgres"]
-            initialDelaySeconds: 10
-            periodSeconds: 10
-      volumes:
-        - name: postgres-data
-          hostPath:
-            path: /path/to/your/host/directory/.volumes/postgres
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: backend
 spec:
   replicas: 1
@@ -144,8 +97,8 @@ spec:
               mountPath: /app/images
       volumes:
         - name: image-storage
-          hostPath:
-            path: /path/to/your/host/directory/.volumes/images
+          persistentVolumeClaim:
+            claimName: image-storage-pvc
 
 ---
 apiVersion: apps/v1
