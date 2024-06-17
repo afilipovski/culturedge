@@ -1,0 +1,69 @@
+version: "3.9"
+services:
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    volumes:
+      - ./.volumes/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234567
+      - POSTGRES_DB=culturedge
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  backend:
+    image: afilipovski/api-gateway:latest-arm64
+    container_name: backend
+    ports:
+      - "9090:9090"
+    build:
+      context: ./microservice-architecture/api-gateway
+    depends_on:
+      - feedback
+      - photo
+      - heritage
+  feedback:
+    image: afilipovski/feedback-microservice:latest-arm64
+    container_name: feedback
+    build:
+      context: ./microservice-architecture/feedback-microservice
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/culturedge
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234567
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  photo:
+    image: afilipovski/photo-microservice:latest-arm64
+    container_name: photo
+    build:
+      context: ./microservice-architecture/photo-microservice
+    volumes:
+      - ./.volumes/images:/app/images
+  heritage:
+    image: afilipovski/heritage-microservice:latest-arm64
+    container_name: heritage
+    build:
+      context: ./microservice-architecture/heritage-microservice
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/culturedge
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234567
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  culturedge-front:
+    image: afilipovski/culturedge-front:latest-arm64
+    container_name: culturedge-front
+    build:
+      context: ./culturedge-front
+    ports:
+      - "30080:80"
+    depends_on:
+      - backend
