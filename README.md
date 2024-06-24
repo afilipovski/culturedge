@@ -34,11 +34,15 @@
 * проф. д-р. Милош Јовановиќ
 * проф. д-р. Панче Рибарски
 
-## **Kubernetes - команди**
+## **Команди**
 
 ```
-cd .kubernetes-manifests
-kubectl apply -f namespace.yml -f .
+docker compose up
 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+cd .kubernetes-manifests
+kubectl apply -f namespace.yml -f ingress.yml -f .
+
+kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 kubectl delete -f .
 ```
