@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailServiceImpl implements EmailService {
     public EmailServiceImpl(JavaMailSender javaMailSender) {
+        System.out.println("hello world");
     }
 
     // Sends an email with the provided email address and message content.
