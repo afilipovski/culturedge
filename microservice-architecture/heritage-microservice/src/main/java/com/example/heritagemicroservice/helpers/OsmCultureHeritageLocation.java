@@ -16,7 +16,15 @@ public class OsmCultureHeritageLocation {
         return displayName;
     }
 
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
     public HashMap<String, String> getAddress() {
         return address;
+    }
+
+    public void setAddress(HashMap<String, String> address) {
+        this.address = address;
     }
 }
