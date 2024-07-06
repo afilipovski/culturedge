@@ -2,8 +2,8 @@ FROM maven:3.9.6 AS build
 
 WORKDIR /app
 
-COPY images ./images
 COPY src ./src
+COPY static ./static
 
 COPY pom.xml .
 
@@ -12,6 +12,8 @@ RUN mvn clean package -DskipTests
 FROM amazoncorretto:21-alpine3.16-jdk
 
 WORKDIR /app
+
+RUN mkdir images
 
 COPY --from=build /app .
 

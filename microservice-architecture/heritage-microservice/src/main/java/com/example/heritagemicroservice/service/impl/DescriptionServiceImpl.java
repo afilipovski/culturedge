@@ -33,8 +33,13 @@ public class DescriptionServiceImpl implements DescriptionService {
     @Override
     public void setByName(String name, String desc) {
         CulturalHeritage culturalHeritage = this.heritageRepository.findByName(name);
-        Description description = descriptionRepository.findByCulturalHeritage(culturalHeritage);
-        description.setDescription(desc);
+        Description description;
+        if (descriptionRepository.findByCulturalHeritage(culturalHeritage) != null) {
+            description = descriptionRepository.findByCulturalHeritage(culturalHeritage);
+            description.setDescription(desc);
+        } else {
+            description = new Description(culturalHeritage, desc);
+        }
         descriptionRepository.save(description);
     }
 }

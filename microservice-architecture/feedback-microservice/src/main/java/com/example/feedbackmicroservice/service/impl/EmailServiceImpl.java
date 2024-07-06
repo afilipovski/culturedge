@@ -16,11 +16,9 @@ public class EmailServiceImpl implements EmailService {
 
     // Sends an email with the provided email address and message content.
     public void sendEmail(String email, String message) {
-
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom("culturedge24@gmail.com");
-        mailMessage.setTo("culturedge24@gmail.com");
-        mailMessage.setSubject(String.format("Feedback from: %s",email));
+        mailMessage.setTo(email);
+        mailMessage.setSubject("Feedback");
         mailMessage.setText(message);
         javaMailSender.send(mailMessage);
     }

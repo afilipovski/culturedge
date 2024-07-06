@@ -15,23 +15,21 @@ services:
             timeout: 5s
             retries: 5
     backend:
-        image: afilipovski/api
+        image: afilipovski/api-gateway:latest-amd64
         container_name: backend
-        build:
-            context: ./microservice-architecture/api-gateway
         ports:
             - "9090:9090"
+        build:
+            context: ./microservice-architecture/api-gateway
         depends_on:
             - feedback
             - photo
             - heritage
     feedback:
-        image: afilipovski/feedback
+        image: afilipovski/feedback-microservice:latest-amd64
         container_name: feedback
         build:
             context: ./microservice-architecture/feedback-microservice
-        ports:
-            - "1111:1111"
         depends_on:
             db:
                 condition: service_healthy
@@ -41,21 +39,17 @@ services:
             - SPRING_DATASOURCE_PASSWORD=1234567
             - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     photo:
-        image: afilipovski/photo
+        image: afilipovski/photo-microservice:latest-amd64
         container_name: photo
         build:
             context: ./microservice-architecture/photo-microservice
         volumes:
             - ./.volumes/images:/app/images
-        ports:
-            - "2222:2222"
     heritage:
-        image: afilipovski/heritage
+        image: afilipovski/heritage-microservice:latest-amd64
         container_name: heritage
         build:
             context: ./microservice-architecture/heritage-microservice
-        ports:
-            - "3333:3333"
         depends_on:
             db:
                 condition: service_healthy
@@ -65,11 +59,11 @@ services:
             - SPRING_DATASOURCE_PASSWORD=1234567
             - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     culturedge-front:
-        image: afilipovski/culturedge-front-d4
+        image: afilipovski/culturedge-front:latest-amd64
         container_name: culturedge-front
         build:
             context: ./culturedge-front
         ports:
-            - "80:80"
+            - "30080:80"
         depends_on:
             - backend

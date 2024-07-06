@@ -1,5 +1,6 @@
 package com.example.feedbackmicroservice.web;
 
+import com.example.feedbackmicroservice.model.Feedback;
 import com.example.feedbackmicroservice.service.FeedbackService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,12 @@ public class FeedbackController {
     public FeedbackController(FeedbackService feedbackService) {
         this.feedbackService = feedbackService;
     }
+
+    @GetMapping("/feedback")
+    public List<Feedback> getFeedback() {
+        return feedbackService.getAllFeedback();
+    }
+
 
     @PostMapping("/feedback")
     public void addFeedback(@RequestParam String name,
