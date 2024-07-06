@@ -1,5 +1,7 @@
 package com.example.feedbackmicroservice.repository;
 
+import com.example.feedbackmicroservice.model.Feedback;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -7,14 +9,6 @@ import java.util.List;
 
 @Repository
 // Repository class for managing feedback data.
-public class FeedbackRepository {
-    List<String> inMemoryData = new ArrayList<>();
+public interface FeedbackRepository extends JpaRepository<Feedback, Long>{
 
-    public List<String> getAll() {
-        return inMemoryData;
-    }
-
-    public void addFeedback(String feedback) {
-        inMemoryData.add(feedback);
-    }
 }

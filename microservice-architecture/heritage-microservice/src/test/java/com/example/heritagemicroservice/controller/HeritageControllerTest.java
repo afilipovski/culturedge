@@ -1,6 +1,7 @@
 package com.example.heritagemicroservice.controller;
 
 import com.example.heritagemicroservice.models.CulturalHeritage;
+import com.example.heritagemicroservice.repository.DescriptionRepository;
 import com.example.heritagemicroservice.repository.HeritageRepository;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONArray;
@@ -24,11 +25,16 @@ public class HeritageControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+
+    @Autowired
+    private DescriptionRepository descriptionRepository;
+
     @Autowired
     private HeritageRepository heritageRepository;
 
     @BeforeEach
     public void setUp() {
+        descriptionRepository.deleteAll();
         heritageRepository.deleteAll();
     }
 
