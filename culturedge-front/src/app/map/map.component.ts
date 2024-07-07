@@ -145,7 +145,7 @@ export class MapComponent implements AfterViewInit, OnInit {
 
     }
 
-    private sortSitesByDistance(): void {
+    public sortSitesByDistance(): void {
         this.sites.sort((a, b) => {
             if (this.userLocation && a.lat && a.lon && b.lat && b.lon) {
                 const distanceA = this.distanceService.calculateDistance(
