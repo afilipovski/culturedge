@@ -25,6 +25,7 @@ public class Description {
         this.description = description;
     }
 
+    public String getDescription() {return this.description;}
     public void setDescription(String description) {
         this.description = description;
     }
